@@ -1,0 +1,18 @@
+[
+  {"id": 1,  "text": "Help! My payments have been failing for 3 days.", "gold": {"is_urgent": true,  "department": "billing",   "frustration": 1}},
+  {"id": 2,  "text": "Ugh, great, my dashboard has been down since this morning, exactly what I needed today.", "gold": {"is_urgent": true,  "department": "technical", "frustration": 2}},
+  {"id": 3,  "text": "This is \"urgent\" I guess, since you keep ignoring my emails about upgrading our plan.", "gold": {"is_urgent": false, "department": "sales",     "frustration": 2}},
+  {"id": 4,  "text": "Could you send me a copy of last month's invoice when you get a chance?", "gold": {"is_urgent": false, "department": "billing",   "frustration": 0}},
+  {"id": 5,  "text": "Production API returning 500s for all our customers right now!!", "gold": {"is_urgent": true,  "department": "technical", "frustration": 2}},
+  {"id": 6,  "text": "Hi! Curious whether the Team plan includes SSO. No rush.", "gold": {"is_urgent": false, "department": "sales",     "frustration": 0}},
+  {"id": 7,  "text": "I think I was charged twice this month, can someone check?", "gold": {"is_urgent": false, "department": "billing",   "frustration": 1}},
+  {"id": 8,  "text": "The export button doesn't work in Safari, works fine in Chrome.", "gold": {"is_urgent": false, "department": "technical", "frustration": 0}},
+  {"id": 9,  "text": "Third time writing in. Webhooks are silently dropping events and we're losing orders. Fix it or we cancel.", "gold": {"is_urgent": true,  "department": "technical", "frustration": 3}},
+  {"id": 10, "text": "Password reset emails aren't arriving and I'm locked out before a client demo in an hour.", "gold": {"is_urgent": true,  "department": "technical", "frustration": 1}},
+  {"id": 11, "text": "You billed my card after I cancelled. I want a refund today and I'm disputing this with my bank.", "gold": {"is_urgent": true,  "department": "billing",   "frustration": 3}},
+  {"id": 12, "text": "Just wanted to say the new UI looks great, keep it up.", "gold": {"is_urgent": false, "department": "general",   "frustration": 0}},
+  {"id": 13, "text": "Not urgent at all, but our checkout page has been completely broken for every customer since yesterday.", "gold": {"is_urgent": true,  "department": "technical", "frustration": 1}},
+  {"id": 14, "text": "Can we schedule a demo for our team sometime next quarter?", "gold": {"is_urgent": false, "department": "sales",     "frustration": 0}},
+  {"id": 15, "text": "asap pls how do i change my email address", "gold": {"is_urgent": false, "department": "general",   "frustration": 0}},
+  {"id": 16, "text": "Our annual renewal invoice is due tomorrow and the amount is wrong by $4,000 - finance won't pay until it's fixed.", "gold": {"is_urgent": true,  "department": "billing",   "frustration": 1}}
+]

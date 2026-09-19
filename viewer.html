@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev vs LLM — trace replay</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel2: #1e222b; --line: #2a2f3a;
+    --fg: #e6e8ee; --muted: #8b93a7; --ok: #3ddc97; --bad: #ff5c5c; --warn: #ffb547;
+    --jev: #6ea8fe; --llm: #d29bff; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 20px; display: grid; gap: 8px; }
+  .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  h1 small { color: var(--muted); font-weight: 400; margin-left: 8px; }
+  button, select { background: var(--panel2); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; font: inherit; cursor: pointer; }
+  button.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); font-weight: 600; }
+  #clock { font-family: var(--mono); font-variant-numeric: tabular-nums; min-width: 92px; }
+  #scrub { flex: 1; min-width: 200px; accent-color: var(--fg); }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 20px 60px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .col { min-width: 0; }
+  .colhead { position: sticky; top: 92px; z-index: 4; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .colhead h2 { margin: 0 0 8px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .jev .dot { background: var(--jev); } .llm .dot { background: var(--llm); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px 10px; }
+  .stat { background: var(--panel2); border-radius: 6px; padding: 6px 8px; }
+  .stat .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .stat .v { font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; }
+  .inflight { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 8px; color: var(--muted); font-size: 12px; min-height: 40px; }
+  .inflight .bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+  .inflight .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--jev), var(--llm)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; margin-bottom: 8px; animation: pop .25s ease-out; }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .card .top { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 12px; font-family: var(--mono); }
+  .card .text { margin: 3px 0 6px; font-size: 13px; }
+  .card.ok-all.hide { display: none; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border-radius: 6px; padding: 2px 8px; font-size: 12px; font-family: var(--mono); border: 1px solid var(--line); background: var(--panel2); }
+  .chip.ok { border-color: var(--ok); color: var(--ok); }
+  .chip.bad { border-color: var(--bad); color: var(--bad); }
+  .chip.bad s { color: var(--muted); margin-right: 4px; }
+  .action { margin-top: 6px; font-size: 12px; color: var(--muted); }
+  .action b { color: var(--fg); font-weight: 500; font-family: var(--mono); }
+  .action b.review { color: var(--warn); }
+  .probs { margin-top: 6px; display: grid; gap: 3px; font-size: 11px; font-family: var(--mono); }
+  .prob { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 6px; color: var(--muted); }
+  .prob .bar { height: 6px; background: var(--panel2); border-radius: 3px; overflow: hidden; }
+  .prob .bar i { display: block; height: 100%; background: var(--jev); }
+  .prob.gold .bar i { background: var(--ok); }
+  .prob .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  details { margin-top: 8px; font-size: 12px; }
+  summary { cursor: pointer; color: var(--muted); }
+  pre { margin: 6px 0 0; background: var(--panel2); padding: 8px; border-radius: 6px; white-space: pre-wrap; word-break: break-word; font-family: var(--mono); font-size: 11px; max-height: 160px; overflow: auto; }
+  .flag { color: var(--bad); font-size: 11px; margin-left: 6px; }
+  .done { text-align: center; color: var(--muted); font-size: 12px; padding: 10px; }
+  #verdict { display: none; margin: 0 20px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  #verdict table { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 13px; }
+  #verdict td, #verdict th { padding: 5px 8px; border-bottom: 1px solid var(--line); text-align: right; }
+  #verdict th:first-child, #verdict td:first-child { text-align: left; color: var(--muted); font-family: inherit; }
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <h1>Jev vs LLM <small id="subtitle"></small></h1>
+  </div>
+  <div class="row">
+    <button id="play" class="primary">▶ Play</button>
+    <button id="restart">↺ Restart</button>
+    <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select>
+    <span id="clock">0.00 s</span>
+    <input id="scrub" type="range" min="0" max="1000" value="0">
+    <span id="total" style="color:var(--muted);font-family:var(--mono)"></span>
+    <label style="color:var(--muted);font-size:12px;display:flex;gap:6px;align-items:center"><input type="checkbox" id="onlyErr"> only mistakes</label>
+  </div>
+</header>
+<main>
+  <section class="col jev" id="col-jev"></section>
+  <section class="col llm" id="col-llm"></section>
+</main>
+<section id="verdict"></section>
+<script src="traces/data.js"></script>
+<script>
+const META = {
+  jev: { title: "Jev (TypeSafe System One)", sub: "one request, 3 typed questions in parallel, calibrated probabilities" },
+  llm: { title: "LLM prompt-and-parse", sub: "claude -p (Haiku 4.5), thinking off, tools/MCP stripped, asked for JSON, regex-parsed" },
+};
+const FIELDS = ["is_urgent", "department", "frustration"];
+// blended rate observed on the TypeSafe billing page: $0.0032 for 87,423 tokens (2026-09-19)
+const JEV_USD_PER_TOKEN = 0.0032 / 87423;
+const costOf = r => r.cost_usd != null ? r.cost_usd : (r.engine === "jev" && r.usage ? (r.usage.input_tokens + r.usage.output_tokens) * JEV_USD_PER_TOKEN : null);
+const T = window.TRACES || {};
+const engines = Object.keys(META).filter(k => T[k]);
+const tickets = {}; let maxT = 0;
+for (const e of engines) {
+  tickets[e] = T[e].filter(r => r.event === "ticket").sort((a, b) => a.t_end - b.t_end);
+  const end = T[e].find(r => r.event === "end");
+  maxT = Math.max(maxT, end ? end.elapsed_s : Math.max(...tickets[e].map(r => r.t_end)));
+}
+
+// ---------- build static skeleton
+const cols = {};
+for (const e of engines) {
+  const col = document.getElementById("col-" + e);
+  const m = META[e];
+  if (tickets[e][0]?.detail?.model) m.sub += " · " + tickets[e][0].detail.model;
+  col.innerHTML = `
+    <div class="colhead">
+      <h2><span class="dot"></span>${m.title}</h2>
+      <div style="color:var(--muted);font-size:12px;margin:-4px 0 8px">${m.sub}</div>
+      <div class="stats">
+        <div class="stat"><div class="k">done</div><div class="v" data-s="n">0/${tickets[e].length}</div></div>
+        <div class="stat"><div class="k">urgent acc</div><div class="v" data-s="is_urgent">–</div></div>
+        <div class="stat"><div class="k">dept acc</div><div class="v" data-s="department">–</div></div>
+        <div class="stat"><div class="k">frustr. acc</div><div class="v" data-s="frustration">–</div></div>
+        <div class="stat"><div class="k">avg latency</div><div class="v" data-s="lat">–</div></div>
+        <div class="stat"><div class="k">throughput</div><div class="v" data-s="tps">–</div></div>
+        <div class="stat"><div class="k">tokens in/out</div><div class="v" data-s="tok">–</div></div>
+        <div class="stat"><div class="k">parse fail</div><div class="v" data-s="pf">0</div></div>
+        <div class="stat"><div class="k">cost</div><div class="v" data-s="cost">–</div></div>
+      </div>
+      <div class="inflight"><span data-s="inflight">idle</span><div class="bar"><i data-s="ibar"></i></div></div>
+    </div>
+    <div class="cards"></div>`;
+  cols[e] = { el: col, cards: col.querySelector(".cards"), stat: k => col.querySelector(`[data-s="${k}"]`), shown: 0 };
+}
+document.getElementById("total").textContent = `/ ${maxT.toFixed(2)} s`;
+const startEv = T[engines[0]].find(r => r.event === "start");
+document.getElementById("subtitle").textContent = `same ${tickets[engines[0]].length} tickets · gold labels by Claude Opus 5 · concurrency ${startEv?.concurrency ?? 1} · both engines run in parallel`;
+
+// ---------- card rendering
+const fmtField = (k, v) => k === "is_urgent" ? (v ? "urgent" : "not urgent") : k === "frustration" ? "frustr " + v : v;
+function probRows(probs, goldKey, labels) {
+  return Object.entries(probs).map(([k, p]) => `
+    <div class="prob ${String(k) === String(goldKey) ? "gold" : ""}">
+      <span class="lbl" title="${labels?.[k] ?? k}">${labels?.[k] ? k + " " + labels[k] : k}</span>
+      <span class="bar"><i style="width:${(p * 100).toFixed(0)}%"></i></span><span>${p.toFixed(2)}</span>
+    </div>`).join("");
+}
+function renderCard(e, r) {
+  const d = r.detail || {};
+  const chips = r.pred ? FIELDS.map(k => {
+    const ok = r.pred[k] === r.gold[k];
+    return `<span class="chip ${ok ? "ok" : "bad"}">${ok ? "" : `<s>${fmtField(k, r.gold[k])}</s>`}${fmtField(k, r.pred[k])}</span>`;
+  }).join("") : `<span class="chip bad">error</span>`;
+  let extra = "";
+  if (e === "jev" && r.pred) {
+    const wrong = FIELDS.some(k => r.pred[k] !== r.gold[k]);
+    extra = `<details ${wrong ? "open" : ""}><summary>p(urgent) ${d.p_urgent.toFixed(2)} · dept conf ${d.department_confidence.toFixed(2)} · frustr conf ${d.frustration_confidence.toFixed(2)}</summary><div class="probs">
+      <div class="prob ${r.gold.is_urgent ? "gold" : ""}"><span class="lbl">p(urgent)</span><span class="bar"><i style="width:${(d.p_urgent * 100).toFixed(0)}%"></i></span><span>${d.p_urgent.toFixed(2)}</span></div>
+      ${probRows(d.department_probs, r.gold.department)}
+      ${probRows(d.frustration_probs, r.gold.frustration, {0:"calm",1:"annoyed",2:"frustrated",3:"angry"})}
+    </div></details>`;
+  } else if (e === "llm") {
+    extra = `<details><summary>raw model output${d.parse_ok ? "" : '<span class="flag">parse failed → fallback</span>'}${d.api_ms ? ` · api ${d.api_ms} ms` : ""}</summary><pre>${(d.raw || r.error || "").replace(/</g, "&lt;")}</pre></details>`;
+  }
+  const review = r.action === "human_review";
+  const okAll = r.pred && FIELDS.every(k => r.pred[k] === r.gold[k]);
+  return `<article class="card ${okAll ? "ok-all" : ""} ${okAll && onlyErr.checked ? "hide" : ""}" id="${e}-${r.id}">
+    <div class="top"><span>#${r.id}</span><span>${r.latency_ms.toFixed(0)} ms · ${r.usage ? r.usage.input_tokens + "→" + r.usage.output_tokens + " tok" : ""}</span></div>
+    <div class="text">${r.text.replace(/</g, "&lt;")}</div>
+    <div class="chips">${chips}</div>
+    <div class="action">action → <b class="${review ? "review" : ""}">${r.action}</b>${review && e === "jev" ? " (p(urgent) in 0.35–0.65 band)" : ""}</div>
+    ${extra}</article>`;
+}
+
+// ---------- playback
+let now = 0, playing = false, last = null;
+const onlyErr = document.getElementById("onlyErr");
+onlyErr.onchange = () => document.querySelectorAll(".card.ok-all").forEach(c => c.classList.toggle("hide", onlyErr.checked));
+const clock = document.getElementById("clock"), scrub = document.getElementById("scrub"), playBtn = document.getElementById("play");
+function stats(e, done) {
+  const c = cols[e];
+  c.stat("n").textContent = `${done.length}/${tickets[e].length}`;
+  for (const k of FIELDS) {
+    const ok = done.filter(r => r.pred && r.pred[k] === r.gold[k]).length;
+    c.stat(k).textContent = done.length ? `${ok}/${done.length}` : "–";
+    c.stat(k).style.color = done.length && ok === done.length ? "var(--ok)" : "";
+  }
+  c.stat("lat").textContent = done.length ? (done.reduce((a, r) => a + r.latency_ms, 0) / done.length).toFixed(0) + " ms" : "–";
+  c.stat("tps").textContent = done.length ? (done.length / done.at(-1).t_end).toFixed(1) + " /s" : "–";
+  const ti = done.reduce((a, r) => a + (r.usage?.input_tokens || 0), 0), to = done.reduce((a, r) => a + (r.usage?.output_tokens || 0), 0);
+  c.stat("tok").textContent = done.length ? `${ti}/${to}` : "–";
+  const pf = done.filter(r => r.detail && r.detail.parse_ok === false).length;
+  c.stat("pf").textContent = pf; c.stat("pf").style.color = pf ? "var(--bad)" : "";
+  const cost = done.reduce((a, r) => a + (costOf(r) || 0), 0);
+  c.stat("cost").textContent = done.some(r => costOf(r) != null) ? "$" + cost.toFixed(4) + (e === "jev" ? " est." : "") : "n/a";
+}
+function render() {
+  clock.textContent = now.toFixed(2) + " s";
+  scrub.value = Math.round(now / maxT * 1000);
+  for (const e of engines) {
+    const c = cols[e];
+    const done = tickets[e].filter(r => r.t_end <= now);
+    if (done.length < c.shown) { c.cards.innerHTML = ""; c.shown = 0; }
+    for (let i = c.shown; i < done.length; i++) c.cards.insertAdjacentHTML("beforeend", renderCard(e, done[i]));
+    if (done.length > c.shown) c.cards.lastElementChild.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    c.shown = done.length;
+    stats(e, done);
+    const inflight = tickets[e].filter(r => r.t_start <= now && now < r.t_end);
+    if (inflight.length) {
+      const oldest = inflight.reduce((a, r) => r.t_start < a.t_start ? r : a);
+      c.stat("inflight").textContent = `${inflight.length} in flight: ${inflight.slice(0, 8).map(r => "#" + r.id).join(" ")}${inflight.length > 8 ? " …" : ""} · oldest ${((now - oldest.t_start) * 1000).toFixed(0)} ms`;
+      c.stat("ibar").style.width = ((now - oldest.t_start) / (oldest.t_end - oldest.t_start) * 100) + "%";
+    } else {
+      c.stat("inflight").textContent = done.length === tickets[e].length ? `finished in ${tickets[e].at(-1).t_end.toFixed(2)} s` : "idle";
+      c.stat("ibar").style.width = "0";
+    }
+  }
+  verdict();
+}
+function verdict() {
+  const v = document.getElementById("verdict");
+  if (now < maxT) { v.style.display = "none"; return; }
+  v.style.display = "block";
+  const rows = [
+    ["wall time (s)", e => tickets[e].at(-1).t_end.toFixed(2)],
+    ["avg latency (ms)", e => (tickets[e].reduce((a, r) => a + r.latency_ms, 0) / tickets[e].length).toFixed(0)],
+    ["avg model-side latency (ms)", e => { const xs = tickets[e].filter(r => r.detail?.api_ms != null); return xs.length ? (xs.reduce((a, r) => a + r.detail.api_ms, 0) / xs.length).toFixed(0) + " (api only)" : "= wall (single HTTP call)"; }],
+    ["p95 latency (ms)", e => tickets[e].map(r => r.latency_ms).sort((a, b) => a - b)[Math.floor(tickets[e].length * 0.95)].toFixed(0)],
+    ["throughput (tickets/s)", e => (tickets[e].length / tickets[e].at(-1).t_end).toFixed(1)],
+    ...FIELDS.map(k => [k + " accuracy", e => tickets[e].filter(r => r.pred && r.pred[k] === r.gold[k]).length + "/" + tickets[e].length]),
+    ["all 3 correct", e => tickets[e].filter(r => r.pred && FIELDS.every(k => r.pred[k] === r.gold[k])).length + "/" + tickets[e].length],
+    ["sent to human_review", e => tickets[e].filter(r => r.action === "human_review").length],
+    ["parse failures", e => tickets[e].filter(r => r.detail?.parse_ok === false).length],
+    ["tokens in / out", e => tickets[e].reduce((a, r) => a + (r.usage?.input_tokens || 0), 0) + " / " + tickets[e].reduce((a, r) => a + (r.usage?.output_tokens || 0), 0)],
+    ["cost (USD)", e => tickets[e].some(r => costOf(r) != null) ? "$" + tickets[e].reduce((a, r) => a + (costOf(r) || 0), 0).toFixed(4) + (e === "jev" ? " (est. from billing page: $0.0032 / 87k tok)" : " (claude -p list price)") : "n/a"],
+  ];
+  v.innerHTML = `<h2 style="margin:0 0 10px;font-size:15px">Final comparison</h2><table>
+    <tr><th></th>${engines.map(e => `<th style="color:var(--${e})">${META[e].title}</th>`).join("")}</tr>
+    ${rows.map(([k, f]) => `<tr><td>${k}</td>${engines.map(e => `<td>${f(e)}</td>`).join("")}</tr>`).join("")}
+  </table>`;
+}
+function tick(ts) {
+  if (!playing) return;
+  if (last != null) now = Math.min(maxT, now + (ts - last) / 1000 * parseFloat(document.getElementById("speed").value));
+  last = ts; render();
+  if (now >= maxT) { playing = false; playBtn.textContent = "▶ Play"; return; }
+  requestAnimationFrame(tick);
+}
+playBtn.onclick = () => {
+  playing = !playing; playBtn.textContent = playing ? "❚❚ Pause" : "▶ Play"; last = null;
+  if (playing && now >= maxT) now = 0;
+  if (playing) requestAnimationFrame(tick);
+};
+document.getElementById("restart").onclick = () => { now = 0; playing = false; playBtn.textContent = "▶ Play"; render(); };
+scrub.oninput = () => { now = scrub.value / 1000 * maxT; render(); };
+render();
+</script>
+</body>
+</html>

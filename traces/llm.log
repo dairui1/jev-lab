@@ -1,0 +1,120 @@
+[llm] #  3    3796ms  + + +  queue:general  
+[llm] #  5    3870ms  + + x  priority_queue:technical  
+[llm] #  4    3884ms  x + x  escalate_to_lead:billing  
+[llm] #  1    5250ms  + + +  queue:sales  
+[llm] #  2    5303ms  + + x  escalate_to_lead:technical  
+[llm] # 11    3116ms  x + x  escalate_to_lead:billing  
+[llm] #  8    7076ms  x + x  escalate_to_lead:billing  
+[llm] #  6    7274ms  + + x  queue:general  
+[llm] # 12    3140ms  + x +  escalate_to_lead:billing  
+[llm] # 13    3132ms  + + x  priority_queue:technical  
+[llm] # 10    5352ms  + + x  priority_queue:technical  
+[llm] #  7    9431ms  + + +  queue:sales  
+[llm] # 14    3032ms  + + +  queue:sales  
+[llm] # 15    3076ms  + + +  escalate_to_lead:technical  
+[llm] # 16    3296ms  + x +  queue:billing  
+[llm] # 18    3144ms  + + x  escalate_to_lead:technical  
+[llm] # 17    3255ms  x x +  escalate_to_lead:billing  
+[llm] # 19    3342ms  + + +  escalate_to_lead:technical  
+[llm] # 20    3324ms  + + +  queue:technical  
+[llm] # 22    2899ms  x + +  escalate_to_lead:billing  
+[llm] # 21    3078ms  + + +  queue:sales  
+[llm] # 23    2999ms  + + x  priority_queue:sales  
+[llm] # 24    2967ms  + + +  queue:technical  
+[llm] # 25    3020ms  + + +  queue:general  
+[llm] #  9   11474ms  + + +  queue:technical  
+[llm] # 26    3203ms  + + x  escalate_to_lead:technical  
+[llm] # 27    3135ms  + + x  priority_queue:technical  
+[llm] # 29    3163ms  x + +  escalate_to_lead:sales  
+[llm] # 30    2948ms  + + +  queue:sales  
+[llm] # 28    3862ms  + + +  queue:billing  
+[llm] # 31    3145ms  + + +  escalate_to_lead:billing  
+[llm] # 32    3248ms  + + +  priority_queue:technical  
+[llm] # 33    3139ms  + + +  queue:sales  
+[llm] # 35    3017ms  + + +  escalate_to_lead:technical  
+[llm] # 34    3159ms  + x +  queue:technical  
+[llm] # 36    3088ms  x + +  escalate_to_lead:billing  
+[llm] # 37    3178ms  + + +  queue:general  
+[llm] # 38    3251ms  + + +  escalate_to_lead:technical  
+[llm] # 39    2982ms  + + +  queue:sales  
+[llm] # 40    3085ms  + + x  escalate_to_lead:billing  
+[llm] # 41    2930ms  + + +  queue:general  
+[llm] # 42    3064ms  + + +  priority_queue:technical  
+[llm] # 43    3425ms  + + x  priority_queue:sales  
+[llm] # 44    3006ms  x x x  priority_queue:billing  
+[llm] # 45    2968ms  + + +  escalate_to_lead:technical  
+[llm] # 46    3121ms  + + +  queue:technical  
+[llm] # 47    2973ms  + + +  queue:sales  
+[llm] # 48    2882ms  + + +  priority_queue:billing  
+[llm] # 49    3142ms  + + +  queue:sales  
+[llm] # 50    3030ms  + + +  escalate_to_lead:technical  
+[llm] # 52    3215ms  + + x  queue:billing  
+[llm] # 51    3407ms  + + +  priority_queue:sales  
+[llm] # 53    3093ms  + + x  escalate_to_lead:technical  
+[llm] # 54    3082ms  x + +  escalate_to_lead:technical  
+[llm] # 55    3134ms  x + +  escalate_to_lead:sales  
+[llm] # 56    2990ms  x + +  escalate_to_lead:billing  
+[llm] # 57    2976ms  x + +  priority_queue:technical  
+[llm] # 58    3129ms  + + x  priority_queue:technical  
+[llm] # 60    3046ms  + x x  escalate_to_lead:technical  
+[llm] # 59    3247ms  x + x  escalate_to_lead:sales  
+[llm] # 61    3066ms  + + +  queue:billing  
+[llm] # 62    3434ms  + + x  escalate_to_lead:technical  
+[llm] # 63    3054ms  + + +  queue:sales  
+[llm] # 64    3173ms  + + +  queue:general  
+[llm] # 65    3138ms  + + +  escalate_to_lead:billing  
+[llm] # 66    3195ms  + + x  priority_queue:technical  
+[llm] # 67    3250ms  + + x  queue:sales  
+[llm] # 69    3357ms  + + +  escalate_to_lead:billing  
+[llm] # 68    3368ms  + + +  queue:general  
+[llm] # 71    2938ms  + + +  queue:sales  
+[llm] # 70    2983ms  + + +  priority_queue:technical  
+[llm] # 72    3157ms  + + +  priority_queue:technical  
+[llm] # 73    2950ms  x + x  priority_queue:technical  
+[llm] # 74    3068ms  + + +  escalate_to_lead:billing  
+[llm] # 77    2953ms  + + +  queue:sales  
+[llm] # 75    3124ms  + + +  queue:sales  
+[llm] # 76    3082ms  + + x  priority_queue:technical  
+[llm] # 78    3138ms  + x +  escalate_to_lead:billing  
+[llm] # 79    3151ms  + + x  priority_queue:sales  
+[llm] # 80    3114ms  + + +  escalate_to_lead:billing  
+[llm] # 81    3010ms  + + +  priority_queue:technical  
+[llm] # 82    3127ms  + + x  priority_queue:technical  
+[llm] # 84    2944ms  + x +  priority_queue:billing  
+[llm] # 83    3001ms  + x +  queue:sales  
+[llm] # 85    3061ms  + + +  queue:billing  
+[llm] # 87    2974ms  x + x  escalate_to_lead:billing  
+[llm] # 86    3138ms  + + +  priority_queue:technical  
+[llm] # 88    3114ms  + x x  escalate_to_lead:billing  
+[llm] # 89    3357ms  + x +  queue:billing  
+[llm] # 90    3148ms  + + +  queue:general  
+[llm] # 92    2954ms  + + x  escalate_to_lead:technical  
+[llm] # 91    3084ms  + x +  queue:technical  
+[llm] # 93    3221ms  + + x  priority_queue:technical  
+[llm] # 94    2973ms  x + +  escalate_to_lead:billing  
+[llm] # 95    2921ms  + + x  priority_queue:technical  
+[llm] # 96    2973ms  + + +  queue:sales  
+[llm] # 97    3041ms  + + +  escalate_to_lead:technical  
+[llm] # 98    3032ms  + + x  escalate_to_lead:technical  
+[llm] # 99    3001ms  x + +  priority_queue:billing  
+[llm] #100    3152ms  + + +  escalate_to_lead:technical  
+[llm] #101    3035ms  x + +  priority_queue:technical  
+[llm] #102    2988ms  + + +  queue:sales  
+[llm] #103    2961ms  + + x  escalate_to_lead:billing  
+[llm] #104    3322ms  + + +  queue:general  
+[llm] #105    2915ms  x + x  escalate_to_lead:general  
+[llm] #106    2973ms  + + x  escalate_to_lead:technical  
+[llm] #107    3145ms  x + +  escalate_to_lead:technical  
+[llm] #108    2929ms  x + +  escalate_to_lead:billing  
+[llm] #109    3038ms  + + +  queue:sales  
+[llm] #110    2943ms  x + +  priority_queue:billing  
+[llm] #111    2996ms  + + x  escalate_to_lead:technical  
+[llm] #112    3080ms  + + x  escalate_to_lead:technical  
+[llm] #113    3388ms  + + x  queue:technical  
+[llm] #114    3037ms  + + +  queue:sales  
+[llm] #116    3131ms  x + x  priority_queue:technical  
+[llm] #115    3382ms  x + +  escalate_to_lead:billing  
+[llm] #118    2831ms  x + +  escalate_to_lead:billing  
+[llm] #117    3118ms  + + x  escalate_to_lead:sales  
+[llm] #119    3193ms  + x +  queue:technical  
+[llm] #120    3015ms  + + x  queue:technical  

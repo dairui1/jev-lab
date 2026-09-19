@@ -1,0 +1,9 @@
+.secrets/
+.venv/
+__pycache__/
+deploy/public/
+# third-party checkouts studied in research/
+jev-ultrafast/
+cline-plugins/
+traces/old/
+.wrangler/

@@ -1,0 +1,339 @@
+<title>Jev Ultrafast vs Cline Jev Browser</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f7;--surface:#ffffff;--surface-2:#eaedf2;--ink:#151a22;--ink-2:#4b5563;--ink-3:#7b8492;--line:#d9dde5;
+  --uf:#d95a1a;--uf-soft:#fbe9df;--uf-ink:#8f3a0d;
+  --cl:#2b56d9;--cl-soft:#e2e9fb;--cl-ink:#1b3a99;
+  --shared:#0f7a5a;--shared-soft:#dff2ea;
+  --code-bg:#1b1f27;--code-ink:#e6e9ef;
+  --serif:"Instrument Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --sans:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216;--surface:#171b21;--surface-2:#1f242c;--ink:#e8ebf0;--ink-2:#aab2be;--ink-3:#7c8595;--line:#2b313b;
+    --uf:#f07a3a;--uf-soft:#3a2216;--uf-ink:#ffb48a;
+    --cl:#6d8cf5;--cl-soft:#1a2340;--cl-ink:#b8c7ff;
+    --shared:#3fbf93;--shared-soft:#14312a;
+    --code-bg:#0b0d11;--code-ink:#dfe3ea;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216;--surface:#171b21;--surface-2:#1f242c;--ink:#e8ebf0;--ink-2:#aab2be;--ink-3:#7c8595;--line:#2b313b;
+  --uf:#f07a3a;--uf-soft:#3a2216;--uf-ink:#ffb48a;
+  --cl:#6d8cf5;--cl-soft:#1a2340;--cl-ink:#b8c7ff;
+  --shared:#3fbf93;--shared-soft:#14312a;
+  --code-bg:#0b0d11;--code-ink:#dfe3ea;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;padding-inline:20px}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,4.2vw,42px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(20px,2.6vw,26px);font-weight:600;margin-top:56px;margin-bottom:6px}
+h3{font-size:16px;font-weight:600}
+p{margin:0 0 12px}
+a{color:inherit}
+code{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.55;background:var(--code-bg);color:var(--code-ink);padding:14px 16px;border-radius:8px;overflow-x:auto;margin:0}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin-top:14px}
+.sub{color:var(--ink-2);max-width:70ch;margin-bottom:18px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:18px}
+.meta span b{color:var(--ink-2);font-weight:500}
+
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+@media (max-width:720px){.pair{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.card.uf{border-top:3px solid var(--uf)}
+.card.cl{border-top:3px solid var(--cl)}
+.card .name{font-family:var(--serif);font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:2px 8px;border-radius:999px;font-weight:500}
+.tag.uf{background:var(--uf-soft);color:var(--uf-ink)}
+.tag.cl{background:var(--cl-soft);color:var(--cl-ink)}
+.tag.sh{background:var(--shared-soft);color:var(--shared)}
+.card .repo{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:4px 0 12px;word-break:break-all}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.5px;margin-top:10px}
+.kv dt{color:var(--ink-3);font-family:var(--mono);font-size:12px;padding-top:2px}
+.kv dd{margin:0}
+
+.dna{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}
+.dna div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--shared);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.dna b{display:block;font-family:var(--serif);font-weight:600;margin-bottom:3px}
+
+.diagrams{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media (max-width:820px){.diagrams{grid-template-columns:1fr}}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.diagram h3{margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram .note{font-size:12.5px;color:var(--ink-2);margin-top:10px;margin-bottom:0}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+svg .box{fill:var(--surface-2);stroke:var(--line);stroke-width:1}
+svg .model{fill:var(--surface);stroke-width:1.5}
+svg .uf .model{stroke:var(--uf)}
+svg .cl .model{stroke:var(--cl)}
+svg .arrow{stroke:var(--ink-3);stroke-width:1.3;fill:none}
+svg .muted{fill:var(--ink-3);font-size:10px}
+svg .head{fill:var(--surface);stroke:var(--ink-3);stroke-dasharray:3 2}
+svg .headsel{stroke:var(--uf);stroke-dasharray:none;stroke-width:1.5}
+
+.tablewrap{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--serif);font-size:13px;font-weight:600;background:var(--surface-2);position:sticky;top:0}
+th.uf{color:var(--uf-ink);box-shadow:inset 0 -2px 0 var(--uf)}
+th.cl{color:var(--cl-ink);box-shadow:inset 0 -2px 0 var(--cl)}
+td:first-child{font-weight:500;color:var(--ink-2);width:150px;font-family:var(--serif)}
+tr:last-child td{border-bottom:0}
+td .why{display:block;color:var(--ink-3);font-size:12.5px;margin-top:4px}
+tbody tr:hover td{background:color-mix(in srgb,var(--surface-2) 50%,transparent)}
+
+.codepair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media (max-width:820px){.codepair{grid-template-columns:1fr}}
+.codepair .cap{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.codepair .cap i{display:inline-block;width:8px;height:8px;border-radius:2px}
+.cap i.uf{background:var(--uf)}.cap i.cl{background:var(--cl)}
+
+.takeaways{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:16px}
+.takeaways .card{padding:18px 20px}
+.takeaways h3{margin-bottom:6px}
+.takeaways p{font-size:13.5px;color:var(--ink-2);margin:0}
+.verdict{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;border-left:4px solid var(--ink)}
+.verdict p{margin-bottom:8px}
+.verdict p:last-child{margin-bottom:0}
+.foot{margin-top:48px;font-size:12px;color:var(--ink-3);font-family:var(--mono);border-top:1px solid var(--line);padding-top:14px}
+ul.tight{margin:6px 0 0 0;padding-left:18px}
+ul.tight li{margin-bottom:4px}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Source study · 2026-09-19</div>
+  <h1>Jev + Browser：两种接法的源码对比</h1>
+  <p class="lede">browser-use 的 <b>jev-ultrafast</b> 和 cline 的 <b>jev-browser</b> 插件同一天（2026-09-18）落地，共享同一套设计哲学——Jev 只做“选择”，不做“生成”；但一个是追求极限速度的独立 Python 库，另一个是嵌进 Cline 的 TypeScript 工具插件。下面是把两边代码全部读完后的结构化对比。</p>
+  <div class="meta">
+    <span><b>jev-ultrafast</b> 1231850 · Python 3.12 · ~810 行核心</span>
+    <span><b>cline/plugins jev-browser</b> 96bde66 · TypeScript/Bun · ~2100 行含插件壳</span>
+  </div>
+
+  <div class="pair">
+    <div class="card uf">
+      <div class="name">Jev Ultrafast <span class="tag uf">standalone lib</span></div>
+      <div class="repo">github.com/browser-use/jev-ultrafast</div>
+      <p style="font-size:13.5px">一个目标进去，Jev 在<b>一次请求</b>里同时选“操作”和“目标元素”；只在 <code>TYPE_TEXT</code> 时调一个小 LLM 写文本。卖点是 Google Flights 苏黎世→伦敦 <b>7.07 s</b>（含文本生成与加载等待）。</p>
+      <dl class="kv">
+        <dt>入口</dt><dd><code>Agent(url, goal).run()</code> 生成器；<code>uv run jev</code> 起本地 inspector（:8766）</dd>
+        <dt>浏览器</dt><dd>browser-harness（CDP daemon）→ <b>用户现有 Chrome 配置</b>，后台 tab</dd>
+        <dt>Jev 接入</dt><dd>直连 <code>api.typesafe.ai/v1/systemone</code>，<code>TYPESAFE_API_KEY</code></dd>
+        <dt>文本模型</dt><dd>任意 OpenAI-compatible；demo 用 OpenRouter <code>inception/mercury-2.5</code>（关 reasoning）</dd>
+        <dt>核心文件</dt><dd><code>agent.py</code> 174 · <code>model.py</code> 198 · <code>browser.py</code> 194 · <code>snapshot.js</code> 119</dd>
+      </dl>
+    </div>
+    <div class="card cl">
+      <div class="name">Cline Jev Browser <span class="tag cl">cline plugin</span></div>
+      <div class="repo">github.com/cline/plugins/tree/main/plugins/jev-browser</div>
+      <p style="font-size:13.5px">给 Cline 注册 6 个工具（<code>jev_run / jev_actions / jev_state / jev_logs / jev_stream / jev_stop</code>）+ 一条安全 rule。大模型（Cline）把“有边界的浏览器子任务”委托给 Jev，跑完拿前后截图自己验证。</p>
+      <dl class="kv">
+        <dt>入口</dt><dd><code>jev_run({url, goal, maxSteps})</code> 工具调用；结果含 <code>status / steps / tracePath / finalScreenshot</code></dd>
+        <dt>浏览器</dt><dd>Playwright <b>隔离 Chromium</b>：空 env、禁扩展、禁下载/SW、origin 白名单、WebM 录像 + 光标叠加</dd>
+        <dt>Jev 接入</dt><dd>AI SDK 7 <code>experimental_evaluate</code> → Vercel AI Gateway <code>typesafe-ai/jev</code>，<code>AI_GATEWAY_API_KEY</code></dd>
+        <dt>文本模型</dt><dd>同一 Gateway key 调 <code>google/gemini-2.5-flash-lite</code>（<code>JEV_TEXT_MODEL</code> 可换）</dd>
+        <dt>核心文件</dt><dd><code>jev-run.ts</code> 288 · <code>jev-model.ts</code> 174 · <code>jev-browser.ts</code> 456 · <code>runtime.ts</code> 563</dd>
+      </dl>
+    </div>
+  </div>
+
+  <h2>共同的设计基因 <span class="tag sh">shared DNA</span></h2>
+  <p class="sub">两边 README/AGENTS 里的措辞几乎逐句对应（“DONE 不是成功的证据”、“浏览器 mutation 永不重试”、“文本助手必须返回恰好一个 <code>text</code> 键”……），核心不变量完全一致：</p>
+  <div class="dna">
+    <div><b>Jev 只能选，不能写</b>模型输出只能是“已观测到的元素 ID / 预定义操作”，永远不会变成 selector、坐标、JS 或 shell。</div>
+    <div><b>TYPE_TEXT 才叫小 LLM</b>文本值由独立小模型从 goal + 字段 + 页面上下文推断，返回 JSON <code>{"text": ...}</code>，≤2000 字符，非法就不打字。</div>
+    <div><b>DOM 快照 ≠ 截图</b>Jev 消费结构化状态：URL/标题/可见文本 ≤6000 字符 + 带索引的可交互元素表，排除 password/file/hidden。</div>
+    <div><b>先记录再观察</b>动作执行后先写 history，再观察结果页；导航打断也不会丢掉“已执行”这一事实。</div>
+    <div><b>Stale 重观测，不重试动作</b>决策时页面变了 → 丢弃决策重观测（预算 2×maxSteps）；已发出的点击/输入绝不重放。</div>
+    <div><b>三步无进展即 blocked</b>连续 3 个非 WAIT 动作页面指纹不变 → 判定卡死。文本助手结果只在上下文完全相同的 stale 重试中复用。</div>
+  </div>
+
+  <h2>决策回路：一次请求里问什么</h2>
+  <p class="sub">这是两者最本质的架构分歧。Ultrafast 用 TypeSafe 的 <b>speculative fan-out</b>：一个“操作”问题 + 每种操作各自的“目标”问题，执行器只消费被选中操作对应的那个 head。Cline 插件则把 (操作, 目标) 展平成一个 choice 问题。</p>
+  <div class="diagrams">
+    <div class="diagram">
+      <h3><i class="tag uf">ultrafast</i> 多 head 推测式 fan-out</h3>
+      <svg viewBox="0 0 480 300" class="uf" role="img" aria-label="jev-ultrafast decision loop">
+        <rect x="10" y="12" width="120" height="34" rx="6" class="box"/>
+        <text x="70" y="27" text-anchor="middle">snapshot.js</text>
+        <text x="70" y="40" text-anchor="middle" class="muted">1 次 CDP evaluate</text>
+        <path d="M130 29 H160" class="arrow" marker-end="url(#a1)"/>
+        <rect x="160" y="12" width="150" height="34" rx="6" class="box"/>
+        <text x="235" y="27" text-anchor="middle">element table [1..n]</text>
+        <text x="235" y="40" text-anchor="middle" class="muted">每节点 1 索引 + operations[]</text>
+        <path d="M235 46 V70" class="arrow" marker-end="url(#a1)"/>
+        <rect x="60" y="70" width="350" height="128" rx="8" class="model"/>
+        <text x="235" y="88" text-anchor="middle" style="font-weight:500">POST api.typesafe.ai/v1/systemone · 1 request</text>
+        <rect x="75" y="100" width="150" height="26" rx="4" class="head headsel"/>
+        <text x="150" y="117" text-anchor="middle">operation → CLICK</text>
+        <rect x="75" y="134" width="100" height="22" rx="4" class="head headsel"/>
+        <text x="125" y="149" text-anchor="middle">click_target</text>
+        <rect x="183" y="134" width="110" height="22" rx="4" class="head"/>
+        <text x="238" y="149" text-anchor="middle" class="muted">type_text_target</text>
+        <rect x="301" y="134" width="95" height="22" rx="4" class="head"/>
+        <text x="348" y="149" text-anchor="middle" class="muted">select_target</text>
+        <text x="235" y="180" text-anchor="middle" class="muted">未被选中的 head 直接丢弃，不能触发任何动作</text>
+        <path d="M125 198 V222" class="arrow" marker-end="url(#a1)"/>
+        <rect x="60" y="222" width="130" height="30" rx="6" class="box"/>
+        <text x="125" y="241" text-anchor="middle">CDP mouse/insertText</text>
+        <path d="M300 198 V222" class="arrow" marker-end="url(#a1)"/>
+        <rect x="235" y="222" width="175" height="30" rx="6" class="box"/>
+        <text x="322" y="235" text-anchor="middle">仅 TYPE_TEXT：小 LLM</text>
+        <text x="322" y="247" text-anchor="middle" class="muted">mercury-2.5 → {"text"}</text>
+        <path d="M322 252 V266 H125 V252" class="arrow"/>
+        <text x="240" y="288" text-anchor="middle" class="muted">post-action wait：2 帧 / 50 ms；combobox 等可见 option ≤200 ms</text>
+        <defs><marker id="a1" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--ink-3)"/></marker></defs>
+      </svg>
+      <p class="note">operation 问题的 criteria 只有 5–8 项（CLICK/TYPE_TEXT/SELECT/SCROLL_*/WAIT/DONE/BLOCKED）；每个 target head 的 criteria 只含<b>兼容该操作</b>的元素。两个决策，一次网络往返。</p>
+    </div>
+    <div class="diagram">
+      <h3><i class="tag cl">cline</i> 单 head 展平 choice</h3>
+      <svg viewBox="0 0 480 300" class="cl" role="img" aria-label="cline jev-browser decision loop">
+        <rect x="10" y="12" width="130" height="34" rx="6" class="box"/>
+        <text x="75" y="27" text-anchor="middle">page.evaluateHandle</text>
+        <text x="75" y="40" text-anchor="middle" class="muted">闭包持有节点</text>
+        <path d="M140 29 H170" class="arrow" marker-end="url(#a2)"/>
+        <rect x="170" y="12" width="150" height="34" rx="6" class="box"/>
+        <text x="245" y="27" text-anchor="middle">targets[] ≤200</text>
+        <text x="245" y="40" text-anchor="middle" class="muted">每 (op,node) 一条 + offscreen</text>
+        <path d="M245 46 V70" class="arrow" marker-end="url(#a2)"/>
+        <rect x="60" y="70" width="350" height="128" rx="8" class="model"/>
+        <text x="235" y="88" text-anchor="middle" style="font-weight:500">experimental_evaluate(gateway "typesafe-ai/jev")</text>
+        <rect x="75" y="100" width="320" height="26" rx="4" class="head" style="stroke:var(--cl);stroke-dasharray:none;stroke-width:1.5"/>
+        <text x="235" y="117" text-anchor="middle">action: 1 个 choice，criteria = 所有 (op:id) 对</text>
+        <text x="90" y="147" class="muted">CLICK:3  TYPE_TEXT:3  SELECT:5:2  CLICK:7 …</text>
+        <text x="90" y="163" class="muted">+ WAIT · SCROLL_UP · SCROLL_DOWN · DONE · BLOCKED · REVIEW</text>
+        <text x="235" y="186" text-anchor="middle" class="muted">概率分布摊在所有 (操作,目标) 组合上；REVIEW 是独有的安全逃生口</text>
+        <path d="M125 198 V222" class="arrow" marker-end="url(#a2)"/>
+        <rect x="55" y="222" width="140" height="30" rx="6" class="box"/>
+        <text x="125" y="241" text-anchor="middle">Playwright click/fill</text>
+        <path d="M300 198 V222" class="arrow" marker-end="url(#a2)"/>
+        <rect x="235" y="222" width="175" height="30" rx="6" class="box"/>
+        <text x="322" y="235" text-anchor="middle">仅 TYPE_TEXT：generateText</text>
+        <text x="322" y="247" text-anchor="middle" class="muted">gemini-2.5-flash-lite → {"text"}</text>
+        <path d="M322 252 V266 H125 V252" class="arrow"/>
+        <text x="240" y="288" text-anchor="middle" class="muted">post-action wait：固定 150 / 350 / 600 ms（scroll·text / 默认 / radio·select）</text>
+        <defs><marker id="a2" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--ink-3)"/></marker></defs>
+      </svg>
+      <p class="note">一个可点又可输入的 input 会变成两条 criteria（<code>CLICK:3</code> 与 <code>TYPE_TEXT:3</code>）。实现更简单，也天然支持 <code>minProbability</code> 门槛；代价是选项数膨胀，概率被稀释。</p>
+    </div>
+  </div>
+
+  <h2>请求体长什么样</h2>
+  <p class="sub">从 <code>model.py:choose()</code> 与 <code>jev-model.ts:buildQuestions()</code> 还原的实际结构（已精简）。</p>
+  <div class="codepair">
+    <div>
+      <div class="cap"><i class="uf"></i>jev-ultrafast · model.py → api.typesafe.ai</div>
+<pre><code>{
+  "model": "jev-latest",
+  "state": {
+    "page": {"url", "title", "text"},        // 可见文本 ≤6000
+    "elements": [                            // 每节点 1 索引
+      {"index":"2","role":"combobox",
+       "label":"Where from?","value":"Zürich",
+       "operations":["TYPE_TEXT","CLICK"]},
+      {"index":"5","role":"combobox","options":[
+         {"index":"5:1","label":"Economy"}]} // 原生 select
+    ],
+    "recent_actions": [...last 10]
+  },
+  "questions": {
+    "operation": {"type":"choice",
+      "criteria": {CLICK, TYPE_TEXT, SELECT,
+                   SCROLL_DOWN, WAIT, DONE, BLOCKED},
+      "instructions": {goal, rules: NEXT_ACTION}},
+    "click_target":     {"criteria": {"1":…,"2":…}},
+    "type_text_target": {"criteria": {"2":…,"3":…}},
+    "select_target":    {"criteria": {"5:1":…}}
+  }
+}
+// 校验：choice ∈ ids、概率和≈1、choice==argmax，
+// 否则 "Invalid TypeSafe response; no action executed."</code></pre>
+    </div>
+    <div>
+      <div class="cap"><i class="cl"></i>cline jev-browser · jev-model.ts → Vercel AI Gateway</div>
+<pre><code>evaluate({
+  model: gateway.evaluationModel("typesafe-ai/jev"),
+  state: JSON.stringify({
+    page: {
+      url, title, text,                      // ≤6000
+      targets: [                             // 每 (op,node) 一条
+        {id:"3", operation:"TYPE_TEXT",
+         label:"Where from?", value:"Zürich", role:"combobox"},
+        {id:"3", operation:"CLICK", …},
+        {id:"5:2", operation:"SELECT", option:"eco", …}],
+      offscreenControls: {above:[…], below:[…]},  // 各 ≤50
+      selectedOptions: [{group,label,value}],    // 已勾选项
+      scrollUp, scrollDown },
+    recentActions: history.slice(-10) }),
+  questions: { action: { type:"choice",
+    instructions: { goal, rules, task },
+    criteria: {
+      WAIT, BLOCKED, REVIEW, DONE?,
+      "TYPE_TEXT:3": {operation,label,currentValue,…},
+      "CLICK:3": {…}, "SELECT:5:2": {…},
+      SCROLL_UP?, SCROLL_DOWN? } } },
+  maxRetries: 0, abortSignal })
+// 校验：仅检查 choice 在 criteria 内；
+// probability 与 providerMetadata.typesafe.confidence 分开记</code></pre>
+    </div>
+  </div>
+
+  <h2>逐维度对比</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>维度</th><th class="uf">jev-ultrafast</th><th class="cl">cline jev-browser</th></tr></thead>
+      <tbody>
+        <tr><td>定位</td><td>独立研究/演示库 + 本地 inspector，目标是<b>可测量的速度</b>（7.07 s Flights，17 次 Jev 请求，中位延迟 178 ms，CDP 调用 1092→101）</td><td>Cline 的<b>工具级委托</b>：大模型决定“何时把子任务交给 Jev”，Jev 跑完回截图；README 明说“未做端到端基准”</td></tr>
+        <tr><td>浏览器</td><td>CDP via browser-harness daemon，<b>复用用户 Chrome 配置</b>（带登录态），后台 tab + <code>Emulation.setFocusEmulationEnabled</code> 防节流，1120×780<span class="why">优点：现成登录态；代价：模型能碰到你的真实账号</span></td><td>Playwright 隔离 Chromium：<code>env:{}</code>、禁扩展/文件系统/下载/service worker、<code>allowedOrigins</code> 白名单、macOS headless 失败自动退回有头窗口，1280×720<span class="why">优点：沙箱化、可录像；代价：无登录态、每次冷启动</span></td></tr>
+        <tr><td>Jev 调用路径</td><td>httpx HTTP/2 直连 TypeSafe <code>/v1/systemone</code>；3 次退避重试仅针对 429/503/529</td><td>AI SDK 7 <code>experimental_evaluate</code> + <code>@ai-sdk/gateway</code>，<code>maxRetries:0</code>；一把 Gateway key 同时付 Jev 与文本模型</td></tr>
+        <tr><td>问题结构</td><td><b>1 operation + N target heads</b>（推测式 fan-out）；target 只含兼容元素；SELECT 目标带代码生成的 option 索引 <code>5:1</code></td><td><b>1 个展平 action choice</b>；已选中的 radio 不列出；DONE 仅在页面有文本时提供；额外 <code>REVIEW</code> 选项</td></tr>
+        <tr><td>观测（DOM 快照）</td><td><code>snapshot.js</code> 挂 <code>window.__jevFast</code>：WeakMap 给节点发代码持有的 ID；递归 accessible name（aria-labelledby → aria-label → labels → alt → 子文本 → title → placeholder）；≤250 动作；scroll/wait 作为伪动作</td><td><code>evaluateHandle</code> 闭包持节点（不污染页面全局）；名字算法更浅；<b>额外输出</b> <code>offscreenControls</code>（视口上/下各 ≤50 个控件名）与 <code>selectedOptions</code>（含屏外已选项）；观测时就做 <code>elementFromPoint</code> 命中测试；≤200 targets；含 <code>label[for]</code></td></tr>
+        <tr><td>新鲜度守卫</td><td>两级：CLICK/SELECT 用<b>作用域 guard</b>（节点 + role/name/value/状态 + 所在 form/dialog/row 的 innerText 6000）+ <code>pageKey</code>（URL、滚动、视口、全部表单值）；其余用全量 <code>marker</code>。允许无关内容变化（动画不触发重观测）</td><td>CLICK/SELECT：URL + 全部表单值 + 该节点 href + 目标属性逐字段相等 + 遮挡检测；TYPE_TEXT/SCROLL/WAIT/DONE：全量 <code>signature</code> 且节点数组逐一 <code>===</code></td></tr>
+        <tr><td>执行</td><td>原始 CDP：<code>Input.dispatchMouseEvent</code> 中心点击；输入 = 平台 selectAll 键 + <code>Input.insertText</code>；原生 select 用 JS 赋值 + input/change 事件。执行前再次 hit-test</td><td>Playwright <code>element.click({timeout:10000})</code> / <code>fill</code> / <code>selectOption</code>，享受 Playwright actionability 检查；label 点击自动转到 <code>control</code></td></tr>
+        <tr><td>动作后等待</td><td>事件驱动：2 个 rAF 或 50 ms；editable combobox 等到可见 <code>[role=option]</code> 出现，上限 200 ms；WAIT = 100 ms</td><td>固定延迟：radio/SELECT 600 ms、TYPE_TEXT/SCROLL 150 ms、其他 350 ms；WAIT = 150 ms<span class="why">这是两者速度差的主要来源之一</span></td></tr>
+        <tr><td>预算与终止</td><td>60 动作 / 120 决策；状态只有 <code>done</code> / <code>blocked</code></td><td>默认 20 步（≤60）、决策 2×、<b>100 s 硬超时</b>、可选 <code>minProbability</code>；7 种状态：<code>done_unverified / blocked / needs_review / uncertain / step_limit / evaluation_limit / interrupted</code></td></tr>
+        <tr><td>安全边界</td><td>模型输出校验严格；服务只绑 loopback + Host/Origin/token 校验；凭据留服务端；但共享真实 Chrome profile</td><td>注入 Cline rule（页面内容视为不可信、敏感操作先问人）；<code>REVIEW</code> 把订单/支付/发消息等交回 Cline；trace 不写生成文本；错误信息刻意不带 provider 响应体</td></tr>
+        <tr><td>Prompt 风格</td><td><code>NEXT_ACTION</code>/<code>TARGET</code> 通用规则：日期选择器三步、先填必填再提交、WAIT 不算加载证据</td><td>同一套通用规则 + 大段<b>电商配置页</b>专用指令（颜色/容量/运营商/trade-in/加入购物车、不进 checkout）——明显是从 Apple Store 类测试场景调出来的</td></tr>
+        <tr><td>跨 run 记忆</td><td>Agent 实例内 history；每个 run 新开 tab</td><td>同一浏览器会话、同一 goal 下保留最近 10 个动作（<code>RunMemory</code>），goal 变了清空</td></tr>
+        <tr><td>可观测性</td><td>本地 inspector：元素编号、operation/target 概率、Choose next 单步；可选 JPEG 帧录制与独立 screencast</td><td>JSONL trace（decision/attempted/executed/stale）、前后 PNG、WebM 录像（光标+点击脉冲叠加）、127.0.0.1 tokenized 实时流、console/network/navigation 日志</td></tr>
+        <tr><td>测试</td><td>pytest 离线（mock TypeSafe），<code>check_guards.py</code> 真浏览器无模型校验</td><td>node:test + 本地 HTML + 真 Gateway adapter 假 HTTP 响应；含 IPC、凭据、导航观测测试</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>关键结论</h2>
+  <div class="takeaways">
+    <div class="card">
+      <h3>同一个想法，两种产品形态</h3>
+      <p>核心洞见相同：把浏览器 agent 从“LLM 生成动作”改成“Jev 在有限动作空间上做分类”，只在需要文本时才调 LLM。Ultrafast 是这个想法的<b>极限压榨版</b>；Cline 插件是它的<b>可交付版</b>——被更大的 agent 编排、沙箱化、带安全逃生口。</p>
+    </div>
+    <div class="card">
+      <h3>速度差主要来自三处</h3>
+      <p>① fan-out 让 Jev 一次回答两个问题、且 criteria 更小；② 动作后等待是 rAF/option 事件驱动（≤200 ms）而非固定 350–600 ms；③ CDP 直连复用已有 Chrome，省掉 Playwright 冷启动和每步的 <code>evaluateHandle</code> 往返。</p>
+    </div>
+    <div class="card">
+      <h3>Cline 版多给 Jev 的信息值得借鉴</h3>
+      <p><code>offscreenControls</code> 让模型知道“要找的选项在下面，滚动而不是打开帮助”；<code>selectedOptions</code> 保住屏外已勾选状态。这两项直接解决长配置页上的常见误判，ultrafast 目前没有。</p>
+    </div>
+    <div class="card">
+      <h3>REVIEW 是 agent-in-the-loop 的正确形状</h3>
+      <p>Jev 不能自己决定下单，但可以识别“下一步是消费性动作”并把控制权交回 Cline。这比 ultrafast 单纯的 DONE/BLOCKED 更适合真实工作流——尽管 README 也承认这是 prompt 层面的引导而非硬边界。</p>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <p><b>如果你要复现 / 集成：</b>做研究或压延迟，读 <code>jev-ultrafast/jev_ultrafast/</code> 四个文件就够了（810 行含 JS）；它的 <code>snapshot.js</code> 名字算法和 guard 设计比 Cline 版精细。做产品接入，Cline 插件的 <code>jev-run.ts</code> 状态机（7 种终止状态 + trace + 100 s deadline）和 <code>runtime.ts</code> 的隔离浏览器配置更值得照抄。</p>
+    <p><b>两边都承认的限制：</b>不处理 shadow DOM、iframe、canvas、文件上传、嵌套滚动、弹出新 tab；accessible name 只是常见 HTML/ARIA 子集；<code>DONE</code> 永远需要独立验证（ultrafast 用 <code>examples/flights.py:verify()</code> 检查 URL 里的 tfs 参数与字段值，Cline 靠主 agent 看最终截图）。</p>
+  </div>
+
+  <div class="foot">本地路径 ~/playground/jev/jev-ultrafast 与 ~/playground/jev/cline-plugins/plugins/jev-browser · 均为 MIT · 结论基于 2026-09-18 提交的源码通读，未跑付费 API</div>
+</div>

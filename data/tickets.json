@@ -1,0 +1,1682 @@
+[
+ {
+  "id": 1,
+  "text": "Hi team, could you please tell me how to add a new seat to our Pro plan? Not urgent, whenever you get a chance.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 2,
+  "text": "URGENT!!! our dashboard has been down for 45 minutes and our exec team is watching a live demo RIGHT NOW",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 3,
+  "text": "just wanted to say the new export feature is really slick, nice work",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 4,
+  "text": "why was I charged twice this month??? this is the SECOND time this has happened and nobody has explained anything",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 5,
+  "text": "no rush at all but fyi none of our reports have loaded since yesterday morning, whole team is stuck",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 6,
+  "text": "asap pls change the color of the login button, our CEO doesn't like blue",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 7,
+  "text": "We are evaluating your platform against two competitors and would like a call this week to discuss enterprise pricing and SSO options.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 8,
+  "text": "invoice number is wrong again. third time. fix it",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 9,
+  "text": "hey quick q - does the API support pagination for the /events endpoint? cant find it in docs",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 10,
+  "text": "I would sincerely appreciate your assistance — I've been trying to log in for two hours and keep getting 'account locked', it's genuinely preventing me from doing my job, thank you so much in advance for your help :)",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 11,
+  "text": "cancel my subscription. now.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 12,
+  "text": "so cool that the trial expired in the middle of our pilot presentation to the board, really great timing on your part 🙃",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 13,
+  "text": "Good afternoon, my name is Wei, I working at logistics company, our data not sync from Shopify since 3 day, can you help check please, thank you",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 14,
+  "text": "not urgent, just curious what's the roadmap for custom alert thresholds",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 15,
+  "text": "ENTIRE DASHBOARD IS BLANK FOR ALL 40 OF OUR USERS. THIS IS UNACCEPTABLE. WE PAY $3000/MONTH FOR THIS.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 16,
+  "text": "hello, could someone kindly confirm whether we're on the annual or monthly plan? just doing some internal bookkeeping, no rush whatsoever",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 17,
+  "text": "your sales rep promised us a discount two weeks ago and now suddenly nobody remembers that conversation. convenient.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 18,
+  "text": "pw reset link expired??",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 19,
+  "text": "This is genuinely one of the worst support experiences I've had. I opened a ticket 9 days ago about broken filters, got one auto-reply, and total silence since. We are actively looking at Looker and Mode as replacements and I will be recommending we switch unless someone actually responds today.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 20,
+  "text": "small thing, not urgent - the favicon looks pixelated on the dashboard tab, might want to fix eventually",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 21,
+  "text": "we need a demo of the forecasting module for our team of 12, could someone set that up for next week?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 22,
+  "text": "billing dept keeps ignoring my emails about the refund from last month. do you people even read these tickets",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 23,
+  "text": "URGENT: need to know if you offer volume discounts for 200+ seats, board meeting tomorrow morning",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 24,
+  "text": "csv export keeps timing out on datasets over 50k rows, been happening for a week, not blocking us yet but wanted to flag",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 25,
+  "text": "how do i change the timezone on my account",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 26,
+  "text": "we were double billed AND our SSO integration broke this morning right before our all-hands, everything is on fire over here, please someone call me",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 27,
+  "text": "Dear Support Team, I hope this message finds you well. Unfortunately I am unable to access any of my saved dashboards since this morning's update - every single view shows a 500 error. I understand your team is likely very busy, so please attend to this whenever convenient, no pressure at all!",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 28,
+  "text": "can we get a W-9 for our accounting team",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 29,
+  "text": "seriously?? renewed our contract yesterday and today I find out you're deprecating the feature we specifically signed up for. explain yourselves.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 30,
+  "text": "sorry to bother, quick one - is there a mobile app or just the browser version?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 31,
+  "text": "I'VE BEEN CHARGED TWICE FOR MY SUBSCRIPTION THIS MONTH AND NO ONE HAS RESPONDED IN 3 DAYS. FIX THIS NOW OR I'M CANCELING AND TELLING EVERY MERCHANT FORUM ABOUT THIS.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 32,
+  "text": "Hi team, just a heads up — our entire storefront has been showing a 500 error since this morning, no products or checkout are loading. No rush on your end, just wanted it on your radar.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 33,
+  "text": "Hi, quick question — does the Pro plan include multi-currency checkout, or do I need a separate add-on for that?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 34,
+  "text": "Need the footer copyright year updated to 2026 ASAP, it's been bugging me all week honestly.",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 35,
+  "text": "Oh cool, checkout has been throwing errors for two hours during our biggest sale of the year. Really great timing on your part.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 36,
+  "text": "You charged me an extra $0.49 'processing adjustment' fee and didn't explain it anywhere. This is absurd and honestly insulting, I want a full breakdown or I'm closing my account.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 37,
+  "text": "How do I change my account email?",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 38,
+  "text": "The entire site has been down for 40 minutes on a Friday afternoon, we're losing sales by the minute and support chat isn't even loading. If this isn't fixed within the hour we're moving to a competitor, I'm done waiting.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 39,
+  "text": "Do you offer annual billing discounts?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 40,
+  "text": "Please I am not understand why my invoice is showing double amount than last month, this happen two time already, I need explain fast because my accountant is asking me.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 41,
+  "text": "Not super urgent but I can't figure out how to update my store's business address in settings, also noticed my last invoice had the old address on it too — mainly need help with the settings part though.",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 42,
+  "text": "No rush whenever you get a chance, but our inventory sync with the warehouse has been broken for like a week now and we're selling out-of-stock items to customers, which is obviously not great.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 43,
+  "text": "Need to add 3 more staff seats to my plan ASAP, have a meeting in an hour and want it sorted before then.",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 44,
+  "text": "Good afternoon! I hope you're having a lovely day. I've been trying ever so politely for a week now to download my March invoice but the link just returns an error page — whenever you have a moment, I'd be so grateful for help.",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 45,
+  "text": "My store was suspended out of nowhere with zero warning and I have orders to fulfill TODAY. This is completely unacceptable, reinstate my account immediately or I will be filing a complaint and pulling my business elsewhere.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 46,
+  "text": "So I've been trying to integrate your API with our custom inventory system for about three weeks now, and honestly it's been one issue after another — first the auth tokens kept expiring randomly, then the webhook payloads changed format without any changelog notice, and now the rate limits seem way lower than what's documented anywhere I can find. I'm not in a massive hurry since we're still testing, but at this point I've spent way more hours on this than I budgeted for and it's getting genuinely frustrating trying to build against a moving target. Could someone actually knowledgeable take a look?",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 47,
+  "text": "Cool, it's only been two weeks since I emailed your sales rep about upgrading my plan and heard absolutely nothing back. Guess I'll just keep guessing what the enterprise tier includes.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 48,
+  "text": "My payment keeps getting declined, need this fixed today please.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 49,
+  "text": "Hey! 😊 Just wondering if there's a way to add a wishlist feature to my store, or is that something on the roadmap? No rush at all, just curious!",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 50,
+  "text": "We're running a 24-hour flash sale and checkout is throwing 'payment method invalid' errors for like a third of customers. This is exactly the kind of thing that should NOT be happening during peak traffic, please escalate this immediately.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 51,
+  "text": "Hi, I'm pitching your platform to my board tomorrow morning — would it be possible to get a quick demo call scheduled today if anyone has availability?",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 52,
+  "text": "So this isn't a huge deal but I've noticed over the last three billing cycles that the tax calculation on my invoices seems slightly off compared to what my accountant calculates manually, sometimes a few cents, sometimes closer to a dollar or two, and I know it's not a massive amount of money but it's starting to add up and also just makes me a little nervous about whether the tax settings are configured correctly for my region, so whenever someone has time I'd appreciate a look, no huge rush though since it's not blocking anything.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 53,
+  "text": "Not saying the whole platform is broken, but my custom domain stopped resolving this morning and I kind of need it working before end of day.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 54,
+  "text": "Been three weeks and the bulk product upload tool STILL corrupts image order every single time I use it. I've stopped even reporting it because clearly no one reads these tickets, but know that we're actively evaluating other platforms because of stuff like this.",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 55,
+  "text": "Your competitor is offering me a better deal and I need a response from someone TODAY or I'm switching 😤 this is my third email about this, unbelievable.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 56,
+  "text": "Would be great if invoices could actually show the correct company name instead of some placeholder text — also my dashboard theme reset itself again but that's the lesser issue here, the invoice thing makes us look unprofessional to our own customers.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 57,
+  "text": "Hello, thank you so much for all your help so far! I just wanted to mention, ever so gently, that I've been locked out of the community forum for about five days now despite resetting my password twice — whenever convenient, I'd love to get that sorted.",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 58,
+  "text": "Payment gateway seems to be completely down across our store — no transactions are processing at all right now. Could someone take a look when available, we're obviously eager to get this resolved.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 59,
+  "text": "I am write third time this week about bulk pricing for reseller, still no answer, maybe this email also go to nowhere like other two.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 60,
+  "text": "WHY IS THE 'ADD TO CART' BUTTON STILL BRIGHT ORANGE, I ASKED FOR IT TO BE CHANGED TO BLUE TWO DAYS AGO AND THIS IS SUPPOSED TO BE URGENT FOR OUR BRAND LAUNCH TOMORROW.",
+  "gold": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 61,
+  "text": "Hi, could you send me a copy of my July invoice when you get a chance? No rush at all.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 62,
+  "text": "OUR ENTIRE CHECKOUT IS DOWN. NO PAYMENTS ARE GOING THROUGH FOR ANY CUSTOMER RIGHT NOW. THIS IS COSTING US THOUSANDS EVERY MINUTE.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 63,
+  "text": "Hello, I'm evaluating your platform for a mid-size marketplace. Could someone walk me through the pricing tiers and payout timelines?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 64,
+  "text": "quick question - does closing my sub-account also delete transaction history or is that kept separately?",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 65,
+  "text": "I was charged TWICE for the same subscription this month and support hasn't responded in 3 days. This needs to be fixed now.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 66,
+  "text": "Just noting that our API webhooks for payout status stopped firing sometime last night, so we have zero visibility into settlements right now. Whenever someone's free to look into it is fine.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 67,
+  "text": "URGENT!! need to reschedule tomorrow's 30 min sales demo call to Thursday, something came up",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 68,
+  "text": "Wow, great job hiding the account deletion option three menus deep. Really user-friendly design there.",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 69,
+  "text": "This is the THIRD time this month a payout has been delayed without explanation. If this happens again we are moving our entire operation to a competitor and I'll make sure our network knows why.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 70,
+  "text": "Cards declining at checkout for multiple customers today, getting generic 'error 402' messages. Need this looked at soon please.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 71,
+  "text": "Following up again on the enterprise proposal you said you'd send last week. Still haven't received anything.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 72,
+  "text": "Good afternoon! I hope you're doing well. I've tried logging in five times today and it keeps saying 'invalid session' — I'd really appreciate any help you can offer whenever convenient. Thank you so much!",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 73,
+  "text": "Sorry for my bad english. My virtual card is not showing correct currency, always show USD but I set EUR. Please fix.",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 74,
+  "text": "PAYOUTS HAVE BEEN STUCK IN 'PROCESSING' FOR 4 DAYS. I HAVE PAYROLL DUE TOMORROW. FIX THIS IMMEDIATELY.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 75,
+  "text": "do you offer nonprofit pricing?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 76,
+  "text": "Not really a billing thing but mainly - I can't access the dashboard at all right now, and also my last statement seems off by $12. The login issue is the bigger problem obviously.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 77,
+  "text": "just wanted to say the new card design looks great 😍 quick q though - can I order a metal one?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 78,
+  "text": "Oh no rush whatsoever, it's only that the entire refund system has been broken for two weeks and customers are emailing me daily asking where their money is lol",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 79,
+  "text": "need pricing sheet ASAP for a call in 20 min, super minor but can't find it anywhere",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 80,
+  "text": "I don't even know where to start with this. Three weeks ago I opened a dispute for a fraudulent charge, I've called four times, been transferred to five different people, and every single time I'm told 'someone will follow up within 48 hours' and then nothing happens. I have screenshots of every conversation. At this point I'm not even asking for an apology, I just want my money back and some acknowledgment that this is completely unacceptable for a company handling people's finances. I'm honestly considering reporting this to the financial ombudsman if I don't hear back by Friday.",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 81,
+  "text": "Hi team, calmly reporting that all outbound payouts across our account have completely stopped since around 2am UTC. No error messages, they just silently fail. Whenever you can take a look is fine, wanted to flag it early.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 82,
+  "text": "not saying it's broken exactly, but the transaction export hasn't updated in 6 hours which isn't normal for us",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 83,
+  "text": "Your sales rep called me four times this week after I said I wasn't interested. Please stop.",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 84,
+  "text": "card frozen, need unfrozen now pls",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 85,
+  "text": "Ah yes, another month, another surprise 'platform maintenance fee' I never agreed to. Love that for me.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 86,
+  "text": "Good morning, sorry to bother you, I understand you're likely very busy. When you have a moment, would it be possible to check why the entire payment gateway appears to be returning 500 errors for all merchants? No urgency implied, just flagging politely.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 87,
+  "text": "I signed up because your rep promised no monthly minimums and now I'm seeing a $50 fee for 'account maintenance.' Feels like a bait and switch and I want it removed or I'm cancelling.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 88,
+  "text": "THIS APP LOGGED ME OUT MID TRANSACTION AND NOW I DON'T KNOW IF THE PAYMENT WENT THROUGH OR NOT AND SUPPORT CHAT IS ALSO DOWN",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 89,
+  "text": "my company registered address changed last week pls update on file, tank you",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 90,
+  "text": "Quick general question - is there a way to see combined statements across both my personal and business accounts, or do I need to check them separately?",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 91,
+  "text": "Hi team, quick question — is there a way to see aggregate webhook delivery success rates per endpoint in the dashboard, or do we need to build that ourselves? No rush at all.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 92,
+  "text": "URGENT!!! our prod webhooks have been failing silently since 2am, we just noticed, orders are not syncing, need help NOW",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 93,
+  "text": "not urgent but fyi the /v2/events endpoint has been returning 500s for about an hour, whenever someone gets a chance",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 94,
+  "text": "why was I charged twice this month?? this is the second time this has happened and honestly I'm losing patience",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 95,
+  "text": "asap pls someone tell me how to reset my api key, locked myself out lol",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 96,
+  "text": "Good afternoon, I would like to inquire about enterprise pricing tiers for a projected volume of 50M requests/month, and whether volume discounts are negotiable for annual commitments.",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 97,
+  "text": "rate limit dropped from 1000rps to 100rps overnight with zero notice, entire checkout flow is down, this is a total outage for us and needs to be fixed immediately",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 98,
+  "text": "hey no rush whensoever but our entire integration has been down since yesterday and customers can't check out, just let me know when someone's free :)",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 99,
+  "text": "invoice #8842 shows a $0 line item but still charged full amount, can someone explain?",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 100,
+  "text": "ABSOLUTELY UNACCEPTABLE. THIRD TIME THIS WEEK YOUR API HAS TIMED OUT DURING PEAK HOURS. WE ARE EVALUATING COMPETITORS AND WILL BE CANCELLING IF THIS ISN'T RESOLVED TODAY.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 101,
+  "text": "hello, sorry to bother, I am not native english speaker, but my webhook signature verification is fail always, is problem with my code or your docs? thank you",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 102,
+  "text": "can i get a demo of the new async batch endpoints? evaluating for a client project, timeline flexible",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 103,
+  "text": "😡 downgraded my plan by mistake and now I'm rate limited to oblivion, PLEASE fix urgently, losing money every minute",
+  "gold": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 104,
+  "text": "just wanted to say thanks, the new SDK docs are way clearer now, appreciate the update",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 105,
+  "text": "im extremely annoyed that support closed my ticket without resolving it. reopening this and expecting an actual answer this time, not a copy paste macro",
+  "gold": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "general",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 106,
+  "text": "sk key exposed in public repo pls revoke asap",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 107,
+  "text": "So I've been going back and forth with our backend team for two weeks trying to figure out why our idempotency keys aren't behaving as documented — sometimes duplicate requests go through, sometimes they get rejected even when they shouldn't be, and honestly we've burned way too many engineering hours on this already. It's not causing a full outage but it's eroding trust in the platform internally and I need someone from your side to actually look at logs with us instead of pointing back to the docs.",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 108,
+  "text": "great, love how the billing page now shows the wrong currency for our account. cool. very cool.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 109,
+  "text": "hi, do you offer a startup discount program? we're pre-revenue but scaling fast",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 110,
+  "text": "ASAP need someone to update the billing email on file, mine is work@dairui1.com and it's still pointing to my old address",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 111,
+  "text": "everything is on fire. every single API call is returning 503. calmly asking if there's a known incident or if it's just us.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 112,
+  "text": "wtf is going on with your status page saying all systems operational when literally nothing works. do better.",
+  "gold": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 113,
+  "text": "not really a big deal but our team lead is annoyed the changelog RSS feed hasn't updated in 3 months, might wanna fix that whenever",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 114,
+  "text": "requesting a call to discuss migrating from our legacy REST integration to the new GraphQL API, also curious about SLA guarantees for enterprise",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 115,
+  "text": "why do you charge overage fees for retries that YOUR api triggered due to 500 errors on your end? seems pretty unfair honestly",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 2
+  }
+ },
+ {
+  "id": 116,
+  "text": "SDK for python is broken on 3.12, ImportError on init, fix pls",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "technical",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 117,
+  "text": "I would be extremely grateful if someone could kindly assist — I've submitted three requests to upgrade my plan over the past week and I remain completely blocked from accessing the feature I'm paying for. Thank you so much in advance for your help!",
+  "gold": {
+   "is_urgent": true,
+   "department": "sales",
+   "frustration": 1
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 1
+  }
+ },
+ {
+  "id": 118,
+  "text": "cancel my subscription. now. I've been on hold with your 'support' for 40 minutes and no one has answered a single email in 5 days.",
+  "gold": {
+   "is_urgent": false,
+   "department": "billing",
+   "frustration": 3
+  },
+  "hint": {
+   "is_urgent": true,
+   "department": "billing",
+   "frustration": 3
+  }
+ },
+ {
+  "id": 119,
+  "text": "quick one — does your platform support mutual TLS for webhook endpoints or just HMAC signatures?",
+  "gold": {
+   "is_urgent": false,
+   "department": "sales",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  }
+ },
+ {
+  "id": 120,
+  "text": "our sandbox account got deleted somehow and we lost 2 weeks of test data, also unrelated but can someone point me to the retry backoff docs, no urgency on either",
+  "gold": {
+   "is_urgent": false,
+   "department": "technical",
+   "frustration": 0
+  },
+  "hint": {
+   "is_urgent": false,
+   "department": "general",
+   "frustration": 1
+  }
+ }
+]

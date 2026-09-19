@@ -1,0 +1,120 @@
+[jev] #  4     867ms  x + +  escalate_to_lead:billing  
+[jev] #  6     873ms  + + x  queue:general  
+[jev] #  7     884ms  + + +  queue:sales  
+[jev] #  1     909ms  + + +  queue:sales  
+[jev] #  2     924ms  + + x  escalate_to_lead:technical  
+[jev] #  3     979ms  + + +  queue:general  
+[jev] # 10     263ms  + + x  priority_queue:technical  
+[jev] #  9     279ms  + + +  queue:technical  
+[jev] # 12     284ms  + + +  human_review  
+[jev] # 11     297ms  + + x  queue:billing  
+[jev] # 13     272ms  + + +  priority_queue:technical  
+[jev] # 14     288ms  + x +  queue:general  
+[jev] # 15     271ms  + + +  escalate_to_lead:technical  
+[jev] # 16     280ms  + x +  queue:billing  
+[jev] # 17     269ms  + + +  queue:sales  
+[jev] # 18     282ms  + + +  human_review  
+[jev] # 19     327ms  + + +  human_review  
+[jev] # 20     325ms  + + +  queue:technical  
+[jev] # 21     290ms  + + +  queue:sales  
+[jev] # 24     262ms  + + +  queue:technical  
+[jev] # 23     281ms  x + x  human_review  
+[jev] # 22     338ms  + + +  queue:billing  
+[jev] # 25     290ms  + + +  queue:general  
+[jev] # 26     273ms  + + +  escalate_to_lead:technical  
+[jev] # 27     293ms  + + +  priority_queue:technical  
+[jev] # 29     290ms  + + +  queue:sales  
+[jev] # 30     309ms  + x +  queue:general  
+[jev] # 28     349ms  + + +  queue:billing  
+[jev] # 32     253ms  + + +  priority_queue:technical  
+[jev] # 31     322ms  + + +  escalate_to_lead:billing  
+[jev] # 33     256ms  + + +  queue:sales  
+[jev] # 34     272ms  + x +  queue:technical  
+[jev] # 35     297ms  + + +  escalate_to_lead:technical  
+[jev] # 36     296ms  + + +  human_review  
+[jev] # 37     313ms  + + +  queue:general  
+[jev] # 38     318ms  + + +  escalate_to_lead:technical  
+[jev] # 39     275ms  + + +  queue:sales  
+[jev] # 40     276ms  + + +  human_review  
+[jev] # 42     256ms  + + +  priority_queue:technical  
+[jev] # 41     334ms  + + +  queue:general  
+[jev] # 43     291ms  + + x  human_review  
+[jev] # 44     272ms  + x +  queue:billing  
+[jev] # 46     261ms  + + +  queue:technical  
+[jev] # 45     353ms  + x +  escalate_to_lead:general  
+[jev] # 47     286ms  + + +  queue:sales  
+[jev] # 48     250ms  + + +  priority_queue:billing  
+[jev] # 50     332ms  + + +  escalate_to_lead:technical  
+[jev] # 51     260ms  x + +  queue:sales  
+[jev] # 49     376ms  + + +  queue:sales  
+[jev] # 53     270ms  + + +  priority_queue:technical  
+[jev] # 52     311ms  + + +  queue:billing  
+[jev] # 54     306ms  x + +  human_review  
+[jev] # 56     294ms  + + +  human_review  
+[jev] # 55     340ms  + + +  human_review  
+[jev] # 57     331ms  + + x  human_review  
+[jev] # 59     305ms  + + +  queue:sales  
+[jev] # 60     252ms  + x x  escalate_to_lead:technical  
+[jev] # 58     340ms  + + x  priority_queue:technical  
+[jev] # 61     295ms  + + +  queue:billing  
+[jev] # 62     322ms  + + x  escalate_to_lead:technical  
+[jev] # 63     316ms  + + +  queue:sales  
+[jev] # 64     311ms  + + +  queue:general  
+[jev] # 65     291ms  + + +  escalate_to_lead:billing  
+[jev] # 66     292ms  + + +  priority_queue:technical  
+[jev] # 67     306ms  + + x  queue:sales  
+[jev] # 69     281ms  + + +  human_review  
+[jev] # 68     342ms  + + +  queue:general  
+[jev] # 70     287ms  + x +  priority_queue:billing  
+[jev] # 72     306ms  + + +  human_review  
+[jev] # 71     390ms  + + +  queue:sales  
+[jev] # 73     281ms  + + +  human_review  
+[jev] # 74     290ms  + + +  escalate_to_lead:billing  
+[jev] # 75     305ms  + + +  queue:sales  
+[jev] # 77     317ms  + + +  queue:sales  
+[jev] # 76     361ms  + + x  priority_queue:technical  
+[jev] # 78     294ms  + x +  escalate_to_lead:billing  
+[jev] # 79     307ms  + + x  human_review  
+[jev] # 80     279ms  + + +  human_review  
+[jev] # 81     293ms  + + +  priority_queue:technical  
+[jev] # 82     297ms  x + x  human_review  
+[jev] # 83     302ms  + x +  queue:sales  
+[jev] # 84     283ms  + x +  priority_queue:billing  
+[jev] # 85     269ms  + + +  human_review  
+[jev] # 86     277ms  + + +  human_review  
+[jev] # 87     285ms  x + +  human_review  
+[jev] # 90     273ms  + + +  queue:general  
+[jev] # 88     315ms  + + +  escalate_to_lead:technical  
+[jev] # 89     353ms  + + +  queue:general  
+[jev] # 92     280ms  + + x  escalate_to_lead:technical  
+[jev] # 91     312ms  + x +  queue:technical  
+[jev] # 93     315ms  x + +  queue:technical  
+[jev] # 94     276ms  x + +  escalate_to_lead:billing  
+[jev] # 95     309ms  + + x  human_review  
+[jev] # 96     273ms  + + +  queue:sales  
+[jev] # 97     282ms  + + +  escalate_to_lead:technical  
+[jev] # 98     289ms  + + x  priority_queue:technical  
+[jev] # 99     350ms  + + +  human_review  
+[jev] #100     298ms  + + +  escalate_to_lead:technical  
+[jev] #101     288ms  + + +  human_review  
+[jev] #102     304ms  + + +  queue:sales  
+[jev] #104     293ms  + + +  queue:general  
+[jev] #103     350ms  + x x  escalate_to_lead:sales  
+[jev] #105     325ms  + + +  queue:general  
+[jev] #107     311ms  + + +  human_review  
+[jev] #106     357ms  + + x  priority_queue:technical  
+[jev] #108     304ms  x + +  human_review  
+[jev] #109     252ms  + + +  queue:sales  
+[jev] #110     302ms  + + +  queue:billing  
+[jev] #111     270ms  + + x  escalate_to_lead:technical  
+[jev] #114     268ms  + x +  queue:technical  
+[jev] #112     293ms  + + x  escalate_to_lead:technical  
+[jev] #115     273ms  x + +  human_review  
+[jev] #113     296ms  + + x  queue:technical  
+[jev] #  5    6306ms  + + x  priority_queue:technical  
+[jev] #116     315ms  x + x  human_review  
+[jev] #117     277ms  + + +  priority_queue:sales  
+[jev] #118     260ms  + + x  human_review  
+[jev] #  8    6522ms  + + +  human_review  
+[jev] #119     279ms  + x +  queue:technical  
+[jev] #120     395ms  + + +  queue:technical  

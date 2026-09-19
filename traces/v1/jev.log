@@ -1,0 +1,16 @@
+[jev] # 1     978ms  + + x  escalate_to_lead:billing  
+[jev] # 2     356ms  + + +  escalate_to_lead:technical  
+[jev] # 3     271ms  + + +  queue:sales  
+[jev] # 4     321ms  + + +  queue:billing  
+[jev] # 5     317ms  + + +  escalate_to_lead:technical  
+[jev] # 6     251ms  + + +  queue:sales  
+[jev] # 7     276ms  + + x  human_review  
+[jev] # 8     276ms  + + +  human_review  
+[jev] # 9     268ms  + + +  escalate_to_lead:technical  
+[jev] #10     273ms  + + x  escalate_to_lead:technical  
+[jev] #11     285ms  + + +  escalate_to_lead:billing  
+[jev] #12     318ms  + + +  queue:general  
+[jev] #13     351ms  + + x  escalate_to_lead:technical  
+[jev] #14     287ms  + + +  queue:sales  
+[jev] #15     288ms  + + x  queue:general  
+[jev] #16     302ms  + + +  priority_queue:billing  
