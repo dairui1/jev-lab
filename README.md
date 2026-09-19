@@ -41,6 +41,22 @@ Short version:
 - **Browser**: ultrafast drives the user's existing Chrome over CDP (browser-harness) and waits on rAF / visible `[role=option]` (≤200 ms); Cline runs an isolated Playwright Chromium with origin allowlist, video, fixed 150/350/600 ms post-action delays — the main source of the speed gap.
 - **Cline adds** `offscreenControls` + `selectedOptions` to the observation and a `REVIEW` escape hatch that hands consequential actions back to the host agent; ultrafast has the finer accessible-name algorithm and scoped freshness guards, plus measured numbers (7.07 s Google Flights, 17 Jev requests, 178 ms median).
 
+## 3. Jev inside Codex's built-in Computer Use (`research/`)
+
+Survey of every open-source "Jev + computer use" project, filtered to the ones that reuse **Codex's own `mcp__cua_repl` runtime** rather than shipping their own controller. Only one qualifies: [yikangy873-gif/jev-desktop](https://github.com/yikangy873-gif/jev-desktop) (v0.2.0, 2026-09-19). The others (Jevbridge, typesafe-computer-use, JevBrowserExt, jev-ego, jev-codex-plugin, jev-use, jev-code, …) are either decision-only libraries, browser-only agents with their own executor, or Codex plugins that never touch the GUI.
+
+→ [`research/jev-codex-computer-use.html`](research/jev-codex-computer-use.html) ([published page](https://claude.ai/artifact/7Uwdk5NmKzNfUSdMo7pVLd))
+
+What makes jev-desktop different from the two browser agents above:
+
+- **Executor is Codex CUA itself** — `cua.getApp()` / Tab → `getAXState / click / setValue / scroll / pressKey`. Covers native macOS apps, not just browser tabs.
+- **Observation is the AX text tree, not the DOM** — `parseAX` regex-parses `[12] button 预览` lines (Chinese macOS roles normalized). No DOM node identity or occlusion checks.
+- **Action space is allowlisted by Codex first** — only controls matching caller-supplied `clickLabels` / `textSlots[].fieldLabel` / `scrollLabels` become Jev candidates; consequential labels (send/pay/delete/submit/…) and sensitive fields are stripped in code, not by prompt.
+- **No second text model** — `TYPE_TEXT` picks a Codex-prepared `textSlots` entry; literal values never leave the machine. `FILL_GROUP` fills several independent prepared fields on one decision.
+- **Same speculative fan-out as ultrafast** (`operation` + per-operation `*_target` heads, adopted in 0.2.0), plus hard gates: confidence ≥ .65 and probability ≥ .70 on both heads; Jev's `DONE` is never trusted — a local `verify(raw)` predicate decides.
+- **API key stays out of the CUA sandbox** via an authenticated loopback bridge (random 127.0.0.1 port, one-shot token, pinned upstream).
+- Author-reported single samples: form task 3.95 s (decision 1.70 s, actions 0.08 s, **AX observation 2.16 s**), Calculator 12+34 in 8.3 s. Observation dominates; not a controlled speedup.
+
 ## License
 
 MIT

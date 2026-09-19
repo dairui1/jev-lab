@@ -1,0 +1,349 @@
+<title>Jev Desktop for Codex</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f7;--surface:#ffffff;--surface-2:#eaedf2;--ink:#151a22;--ink-2:#4b5563;--ink-3:#7b8492;--line:#d9dde5;
+  --uf:#d95a1a;--uf-soft:#fbe9df;--uf-ink:#8f3a0d;
+  --cl:#2b56d9;--cl-soft:#e2e9fb;--cl-ink:#1b3a99;
+  --cx:#7a3fd1;--cx-soft:#eee4fb;--cx-ink:#4e2390;
+  --shared:#0f7a5a;--shared-soft:#dff2ea;
+  --warn:#b7791f;--warn-soft:#fbf1dc;
+  --code-bg:#1b1f27;--code-ink:#e6e9ef;
+  --serif:"Instrument Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --sans:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216;--surface:#171b21;--surface-2:#1f242c;--ink:#e8ebf0;--ink-2:#aab2be;--ink-3:#7c8595;--line:#2b313b;
+    --uf:#f07a3a;--uf-soft:#3a2216;--uf-ink:#ffb48a;
+    --cl:#6d8cf5;--cl-soft:#1a2340;--cl-ink:#b8c7ff;
+    --cx:#b48cf0;--cx-soft:#2a1d40;--cx-ink:#d7c3ff;
+    --shared:#3fbf93;--shared-soft:#14312a;
+    --warn:#e0a94a;--warn-soft:#33270f;
+    --code-bg:#0b0d11;--code-ink:#dfe3ea;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216;--surface:#171b21;--surface-2:#1f242c;--ink:#e8ebf0;--ink-2:#aab2be;--ink-3:#7c8595;--line:#2b313b;
+  --uf:#f07a3a;--uf-soft:#3a2216;--uf-ink:#ffb48a;
+  --cl:#6d8cf5;--cl-soft:#1a2340;--cl-ink:#b8c7ff;
+  --cx:#b48cf0;--cx-soft:#2a1d40;--cx-ink:#d7c3ff;
+  --shared:#3fbf93;--shared-soft:#14312a;
+  --warn:#e0a94a;--warn-soft:#33270f;
+  --code-bg:#0b0d11;--code-ink:#dfe3ea;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;padding-inline:20px}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,4.2vw,42px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(20px,2.6vw,26px);font-weight:600;margin-top:56px;margin-bottom:6px}
+h3{font-size:16px;font-weight:600}
+p{margin:0 0 12px}
+a{color:inherit}
+code{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.55;background:var(--code-bg);color:var(--code-ink);padding:14px 16px;border-radius:8px;overflow-x:auto;margin:0}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin-top:14px}
+.sub{color:var(--ink-2);max-width:70ch;margin-bottom:18px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:18px}
+.meta span b{color:var(--ink-2);font-weight:500}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:2px 8px;border-radius:999px;font-weight:500;white-space:nowrap}
+.tag.uf{background:var(--uf-soft);color:var(--uf-ink)}
+.tag.cl{background:var(--cl-soft);color:var(--cl-ink)}
+.tag.cx{background:var(--cx-soft);color:var(--cx-ink)}
+.tag.sh{background:var(--shared-soft);color:var(--shared)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.card.cx{border-top:3px solid var(--cx);margin-top:28px}
+.card .name{font-family:var(--serif);font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card .repo{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:4px 0 12px;word-break:break-all}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.5px;margin-top:10px}
+.kv dt{color:var(--ink-3);font-family:var(--mono);font-size:12px;padding-top:2px}
+.kv dd{margin:0}
+
+.survey{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:16px}
+.survey div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.survey div.hit{border-left:3px solid var(--cx)}
+.survey div.miss{border-left:3px solid var(--line);color:var(--ink-2)}
+.survey b{display:block;font-family:var(--serif);font-weight:600;margin-bottom:3px;color:var(--ink)}
+.survey .why{font-size:12.5px;color:var(--ink-3);margin-top:4px;display:block}
+
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:16px}
+.diagram svg{width:100%;height:auto;display:block;max-width:900px;margin:0 auto}
+.diagram .note{font-size:12.5px;color:var(--ink-2);margin-top:10px;margin-bottom:0}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+svg .box{fill:var(--surface-2);stroke:var(--line);stroke-width:1}
+svg .codex{fill:var(--surface);stroke:var(--ink-3);stroke-width:1.2}
+svg .model{fill:var(--surface);stroke:var(--cx);stroke-width:1.5}
+svg .arrow{stroke:var(--ink-3);stroke-width:1.3;fill:none}
+svg .muted{fill:var(--ink-3);font-size:10px}
+svg .head{fill:var(--surface);stroke:var(--ink-3);stroke-dasharray:3 2}
+svg .headsel{stroke:var(--cx);stroke-dasharray:none;stroke-width:1.5}
+svg .lane{fill:none;stroke:var(--line);stroke-dasharray:4 3}
+svg .lanelabel{fill:var(--ink-3);font-size:10px;letter-spacing:.06em}
+
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:16px}
+.pillars div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cx);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.pillars b{display:block;font-family:var(--serif);font-weight:600;margin-bottom:3px}
+
+.tablewrap{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--serif);font-size:13px;font-weight:600;background:var(--surface-2);position:sticky;top:0}
+th.uf{color:var(--uf-ink);box-shadow:inset 0 -2px 0 var(--uf)}
+th.cl{color:var(--cl-ink);box-shadow:inset 0 -2px 0 var(--cl)}
+th.cx{color:var(--cx-ink);box-shadow:inset 0 -2px 0 var(--cx)}
+td:first-child{font-weight:500;color:var(--ink-2);width:130px;font-family:var(--serif)}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:color-mix(in srgb,var(--surface-2) 50%,transparent)}
+table.small{min-width:560px}
+table.small td:first-child{width:auto;font-family:var(--sans);font-weight:400;color:var(--ink)}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.codepair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media (max-width:820px){.codepair{grid-template-columns:1fr}}
+.codepair .cap{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-bottom:6px}
+
+.takeaways{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:16px}
+.takeaways .card{padding:18px 20px}
+.takeaways h3{margin-bottom:6px}
+.takeaways p{font-size:13.5px;color:var(--ink-2);margin:0}
+.verdict{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;border-left:4px solid var(--ink)}
+.verdict p{margin-bottom:8px}
+.verdict p:last-child{margin-bottom:0}
+.foot{margin-top:48px;font-size:12px;color:var(--ink-3);font-family:var(--mono);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Source study · 2026-09-20 · part 2 of the Jev + GUI series</div>
+  <h1>Jev 接进 Codex 内置 Computer Use</h1>
+  <p class="lede">在 <a href="https://github.com/browser-use/jev-ultrafast">jev-ultrafast</a> 与 <a href="https://github.com/cline/plugins/tree/main/plugins/jev-browser">Cline jev-browser</a> 之后一天，出现了第三种接法：<b>不带自己的执行层</b>，把 Jev 的决策回路塞进 Codex 已有的 <code>mcp__cua_repl</code>（Computer Use REPL）里，用 CUA 的 AX 树观测、CUA 的 click/setValue 执行——同时覆盖浏览器 tab 和原生 macOS 应用。这一页把它读完，并与前两者做三方对比。</p>
+  <div class="meta">
+    <span><b>yikangy873-gif/jev-desktop</b> 9b02783 · 2026-09-19 · v0.2.0 · Node 22 + Python setup · 零 npm 依赖</span>
+    <span><b>核心</b> runner.mjs 463 · bridge-server 113 · client 78 · codex-adapter 63 · SKILL.md 157</span>
+  </div>
+
+  <h2>先回答“有没有”：开源里符合“Codex 内置 CUA + Jev”的只有一个</h2>
+  <p class="sub">在 GitHub 与 awesome-jev 列表里搜到的所有“Jev + computer use”项目，按<b>是否复用 Codex 自带的 Computer Use 运行时</b>筛选：</p>
+  <div class="survey">
+    <div class="hit"><b>yikangy873-gif/jev-desktop <span class="tag cx">✓ 目标项目</span></b>Codex 插件（marketplace + SKILL.md）。在 <code>cua_repl</code> 里 <code>import</code> 自己的 runner，用 <code>cua.getApp()</code> / Tab 作为唯一执行体。<span class="why">README 原话：“reuses the existing Codex Computer Use runtime… does not install a second browser controller, call private Computer Use APIs”</span></div>
+    <div class="miss"><b>gamesonrblx/Jevbridge</b>“Codex / Claude / Grok 的 computer-use 决策适配器”，但只输出打分决策（execute/confirm/escalate），<b>不执行</b>，也不接 CUA。<span class="why">是决策库，不是 Codex CUA 集成</span></div>
+    <div class="miss"><b>awlevin/typesafe-computer-use</b>macOS 循环：截屏 OCR → Jev 分类动作 → 自己发点击。<span class="why">自带执行层，与 Codex 无关</span></div>
+    <div class="miss"><b>chy4pro/JevBrowserExt · romaluev/jev-ego · Ying-Kai-Liao/jev-browser · vlad-terin/jev-browser</b>Chrome 扩展 / ego lite / Playwright / agent skill，都是浏览器专用、自带控制器。<span class="why">同 ultrafast、Cline 一类</span></div>
+    <div class="miss"><b>jev-codex-plugin · codex-jev-assistant · jev-use · jev-code · jev-codex-router</b>Codex 插件，但用 Jev 做工具选择、风险审查、模型路由、完成度校验——<b>不碰 GUI</b>。<span class="why">Codex + Jev，无 computer use</span></div>
+    <div class="miss"><b>droidrun/mobile-jev</b>Android，Mobilerun 平台。<span class="why">移动端，非 Codex</span></div>
+  </div>
+
+  <div class="card cx">
+    <div class="name">Jev Desktop for Codex <span class="tag cx">codex plugin</span> <span class="tag warn">v0.2.0 · 单人项目</span></div>
+    <div class="repo">github.com/yikangy873-gif/jev-desktop · plugins/jev-desktop</div>
+    <p style="font-size:13.5px">三方分工写得很清楚：<b>Codex</b> 理解目标、准备文本、划定允许的控件、最终验证；<b>Jev</b> 一次请求选 operation + 兼容 target；<b>Computer Use</b> 观测并执行。作者明确引用了 ultrafast（多 head 策略）和 Cline（有界会话复用），0.2.0 就是把 ultrafast 的 fan-out 移植过来。</p>
+    <dl class="kv">
+      <dt>入口</dt><dd>SKILL.md 指导 Codex 在 <code>cua_repl</code> 里 <code>await import('PLUGIN_ROOT/scripts/codex-adapter.mjs')</code>，<code>createCodexJev({target, client, goal, clickLabels, textSlots, verify, …}).run({maxMs:18000, maxActions:8})</code></dd>
+      <dt>执行体</dt><dd>Codex CUA 的 <code>target.getAXState({disableDiffing:true})</code> / <code>click(id)</code> / <code>setValue(id,text)</code> / <code>scroll(id,dir,1)</code> / <code>pressKey</code>；<code>kind:'app'</code> 或 <code>'tab'</code></dd>
+      <dt>Jev 接入</dt><dd>直连 <code>api.typesafe.ai/v1/systemone</code>，但经过一个<b>本机 loopback bridge</b>（随机 127.0.0.1 端口、一次性 Bridge token、pin 上游、拒绝 Origin 头）——因为 CUA 沙箱可能没有 proxy，也不该持有 key</dd>
+      <dt>文本模型</dt><dd><b>没有</b>。<code>TYPE_TEXT</code> 从 Codex 预置的 <code>textSlots[{name,value,fieldLabel}]</code> 里选一个槽位；字面值永远留在本机</dd>
+      <dt>凭据</dt><dd><code>setup.py</code> 起临时 loopback 页面让用户自己粘 key → <code>~/.config/codex-jev-desktop/config.json</code>（0600）；插件代码与 Codex 对话都不接触 key</dd>
+      <dt>测试</dt><dd>123 个离线 node:test；实测样本（非受控对比）见下</dd>
+    </dl>
+  </div>
+
+  <h2>回路：三个执行域，一次 Jev 请求</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 900 360" role="img" aria-label="jev-desktop decision loop across Codex, CUA REPL and TypeSafe">
+      <rect x="8" y="8" width="200" height="344" rx="8" class="lane"/>
+      <text x="108" y="26" text-anchor="middle" class="lanelabel">CODEX（主模型）</text>
+      <rect x="220" y="8" width="440" height="344" rx="8" class="lane"/>
+      <text x="440" y="26" text-anchor="middle" class="lanelabel">mcp__cua_repl（本机 JS 运行时）</text>
+      <rect x="672" y="8" width="220" height="344" rx="8" class="lane"/>
+      <text x="782" y="26" text-anchor="middle" class="lanelabel">远端</text>
+
+      <rect x="20" y="40" width="176" height="70" rx="6" class="codex"/>
+      <text x="108" y="58" text-anchor="middle" style="font-weight:500">先看一眼 UI，写会话策略</text>
+      <text x="108" y="74" text-anchor="middle" class="muted">clickLabels · textSlots(字面值)</text>
+      <text x="108" y="87" text-anchor="middle" class="muted">scrollLabels · keys · fillGroups</text>
+      <text x="108" y="100" text-anchor="middle" class="muted">verify(raw) · scopeCheck · observations</text>
+      <path d="M196 75 H232" class="arrow" marker-end="url(#m)"/>
+
+      <rect x="232" y="40" width="200" height="34" rx="6" class="box"/>
+      <text x="332" y="55" text-anchor="middle">target.getAXState()</text>
+      <text x="332" y="68" text-anchor="middle" class="muted">完整 AX 文本树，disableDiffing</text>
+      <path d="M332 74 V96" class="arrow" marker-end="url(#m)"/>
+      <rect x="232" y="96" width="200" height="34" rx="6" class="box"/>
+      <text x="332" y="111" text-anchor="middle">parseAX → buildActions</text>
+      <text x="332" y="124" text-anchor="middle" class="muted">正则解析 [12] button 预览；只保留白名单</text>
+      <path d="M332 130 V152" class="arrow" marker-end="url(#m)"/>
+      <rect x="232" y="152" width="200" height="34" rx="6" class="box"/>
+      <text x="332" y="167" text-anchor="middle">consequential / sensitive 过滤</text>
+      <text x="332" y="180" text-anchor="middle" class="muted">发送/支付/submit/… → deferred；密码/验证码 → 剔除</text>
+      <path d="M332 186 V208" class="arrow" marker-end="url(#m)"/>
+
+      <rect x="232" y="208" width="200" height="60" rx="6" class="model"/>
+      <text x="332" y="224" text-anchor="middle" style="font-weight:500">buildDecisionSpace</text>
+      <rect x="244" y="232" width="80" height="14" rx="3" class="head headsel"/><text x="284" y="243" text-anchor="middle" style="font-size:9px">operation</text>
+      <rect x="330" y="232" width="46" height="14" rx="3" class="head headsel"/><text x="353" y="243" text-anchor="middle" style="font-size:9px">click_t</text>
+      <rect x="382" y="232" width="42" height="14" rx="3" class="head"/><text x="403" y="243" text-anchor="middle" class="muted" style="font-size:9px">type_t</text>
+      <text x="332" y="262" text-anchor="middle" class="muted">+ fill_group_target · scroll_*_target · key_target</text>
+
+      <path d="M432 238 H466" class="arrow" marker-end="url(#m)"/>
+      <rect x="466" y="212" width="180" height="52" rx="6" class="box"/>
+      <text x="556" y="229" text-anchor="middle">bridge-client → 127.0.0.1:rand</text>
+      <text x="556" y="242" text-anchor="middle" class="muted">Authorization: Bridge &lt;token&gt;</text>
+      <text x="556" y="255" text-anchor="middle" class="muted">state 只含白名单元素+布尔观察</text>
+      <path d="M646 238 H684" class="arrow" marker-end="url(#m)"/>
+      <rect x="684" y="212" width="196" height="52" rx="6" class="model"/>
+      <text x="782" y="229" text-anchor="middle">bridge-server（本机进程）</text>
+      <text x="782" y="242" text-anchor="middle" class="muted">读 0600 key · pin 上游 · 不重试</text>
+      <text x="782" y="255" text-anchor="middle" class="muted">→ api.typesafe.ai/v1/systemone</text>
+
+      <path d="M556 264 V292" class="arrow" marker-end="url(#m)"/>
+      <rect x="466" y="292" width="180" height="50" rx="6" class="box"/>
+      <text x="556" y="308" text-anchor="middle">validateChoice ×2 + 门槛</text>
+      <text x="556" y="321" text-anchor="middle" class="muted">confidence ≥ .65 · probability ≥ .70</text>
+      <text x="556" y="334" text-anchor="middle" class="muted">operation 与选中 target 各查一次</text>
+
+      <path d="M466 317 H432" class="arrow" marker-end="url(#m)"/>
+      <rect x="232" y="292" width="200" height="50" rx="6" class="box"/>
+      <text x="332" y="308" text-anchor="middle">guard 再观测 → 相同才执行</text>
+      <text x="332" y="321" text-anchor="middle" class="muted">target.click / setValue(slot) / scroll</text>
+      <text x="332" y="334" text-anchor="middle" class="muted">先 push trace，再执行，再 post 观测</text>
+      <path d="M232 317 H196" class="arrow" marker-end="url(#m)"/>
+      <rect x="20" y="284" width="176" height="66" rx="6" class="codex"/>
+      <text x="108" y="302" text-anchor="middle" style="font-weight:500">拿回状态，决定下一步</text>
+      <text x="108" y="317" text-anchor="middle" class="muted">done(本地 verify 通过) · yielded</text>
+      <text x="108" y="330" text-anchor="middle" class="muted">needs_codex_review · low_confidence</text>
+      <text x="108" y="343" text-anchor="middle" class="muted">needs_inspection(poisoned) · …</text>
+      <defs><marker id="m" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--ink-3)"/></marker></defs>
+    </svg>
+    <p class="note">每个 <code>run()</code> 是一个 ≤18 s / ≤8 动作的 chunk（MCP 工具调用有超时），会话对象留在 REPL 里，Codex 可反复 <code>session.run()</code> 续跑。Jev 的 <code>DONE</code> 永远不被采信：<code>verify(raw)</code> 在每次决策前和每次动作后本地跑，Jev 说 DONE 但 verify 没过 → <code>failed_verification</code>。</p>
+  </div>
+
+  <h2>它和前两个的核心不同</h2>
+  <div class="pillars">
+    <div><b>观测是 AX 文本树，不是 DOM</b>CUA 返回类似 <code>[12] button 预览</code> 的缩进文本，<code>parseAX</code> 用一条大正则解析角色/标签/Value/ID/checked，并把 按钮/文本栏/复选框 等中文 macOS 角色映射到英文。因此天然覆盖原生 app（Calculator 实测），但没有 DOM 节点身份和遮挡检测——README 自己承认“CUA element-index freshness is not equivalent to DOM node identity”。</div>
+    <div><b>动作空间由 Codex 事先白名单化</b>ultrafast/Cline 把页面上<i>所有</i>可见控件都交给 Jev；jev-desktop 只把匹配 <code>clickLabels</code>（精确串或受限正则，拒绝空匹配和“Button|删除文件|哨兵”全中的宽泛模式）的控件放进候选。会话选项在构造时冻结，后续改数组也扩不了权。超过 240 个候选直接报错让你缩范围。</div>
+    <div><b>没有第二个文本模型</b>Codex 已经知道该填什么，所以 <code>TYPE_TEXT</code> 的 target head 是 <code>fill_&lt;node&gt;_&lt;slot&gt;</code>：Jev 选“哪个字段填哪个预置槽”，值本地 <code>setValue</code>。还多了 <code>FILL_GROUP</code>：多个独立字段一次决策、逐个填、每填一个重新观测。省掉 mercury/gemini 那一跳，也省掉泄露。</div>
+    <div><b>三层安全网</b>① 标签正则：发送/发布/支付/删除/登录/submit/checkout… 直接不进候选，返回 <code>needs_codex_review</code>；Return/Enter/Delete 快捷键被禁用；② 目标名含 codex/Terminal/password/keychain 的 app 拒绝创建会话；③ 双门槛：operation 和 target 的 confidence ≥ .65 且 probability ≥ .70，否则 <code>low_confidence</code> 交还 Codex。</div>
+    <div><b>Key 隔离靠 loopback bridge</b>CUA 沙箱不该持有 TypeSafe key，也可能没有出网 proxy。于是在宿主 shell 起 <code>bridge-server.mjs</code>：随机端口、mode-0600 descriptor 里放一次性 token、只接受 <code>POST /v1/systemone</code>、拒绝带 Origin 的请求、请求体 ≤256 KB、上游 15 s 超时、idle 5 min 自退。CUA 侧只拿到 token。</div>
+    <div><b>确定性快路径绕开 Jev</b><code>fast-path.mjs</code>：已知搜索 URL 直接开 tab，用 AX 树验证结果（URL query 匹配 + 标题 <code>xxx_百度搜索</code> + <code>content_left</code> 下有 heading），零 Jev 请求。SKILL.md 反复强调“别因为装了这个 skill 就为一个搜索开 Jev 会话”。</div>
+  </div>
+
+  <h2>请求体：白名单元素 + 布尔观察</h2>
+  <div class="codepair">
+    <div>
+      <div class="cap">runner.mjs → state（只有这些离开本机）</div>
+<pre><code>{
+  "task": "Fill the draft form and open preview",
+  "target": "the scoped page",
+  "elements": [                      // 仅被候选动作引用的节点
+    {"id": 12, "role": "button", "label": "预览",
+     "operations": ["CLICK"],
+     "checked": false, "selected": false,
+     "filledSlots": []},
+    {"id": 7, "role": "text field", "label": "标题",
+     "operations": ["TYPE_TEXT", "FILL_GROUP"],
+     "filledSlots": [0]}              // 已等于 slot 0 的值
+  ],
+  "observations": [                  // caller 定义的布尔谓词
+    {"name": "result visible", "present": false}],
+  "recentActions": [...last 8 {action, description, changed}]
+}
+// 不含：完整 AX 树、截图、textSlots 的 value、
+// 未被白名单命中的任何控件</code></pre>
+    </div>
+    <div>
+      <div class="cap">buildDecisionSpace → questions（ultrafast 同款 fan-out）</div>
+<pre><code>{
+  "operation": {"type":"choice",
+    "criteria": {
+      "CLICK":      "Click one currently observed permitted control.",
+      "TYPE_TEXT":  "Fill one … with its caller-prepared local text slot.",
+      "FILL_GROUP": "Fill one caller-prepared group of independent fields.",
+      "SCROLL_DOWN": …, "KEY": …,
+      "DONE":    "Every requested outcome is already visibly satisfied.",
+      "BLOCKED": "No permitted operation can make progress…"},
+    "instructions": {goal, rules: nextActionRules}},
+  "click_target": {"criteria": {
+      "click_12": {"action":"Click button 预览","label":"预览","element":12}}},
+  "type_text_target": {"criteria": {
+      "fill_7_0": {"action":"Replace text field 标题 with prepared
+                   text slot 0: project title","element":7}}},
+  "fill_group_target": {"criteria": {
+      "fill_group_0": {"action":"Fill prepared group 0: …",
+                       "elements":[7,8,9]}}}
+}
+// 校验与 ultrafast 一致：choice∈ids、Σp≈1(±.025)、choice=argmax
+// 额外：两个 head 各自过 minConfidence/minProbability</code></pre>
+    </div>
+  </div>
+
+  <h2>三方对比</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>维度</th><th class="uf">jev-ultrafast</th><th class="cl">Cline jev-browser</th><th class="cx">Codex jev-desktop</th></tr></thead>
+      <tbody>
+        <tr><td>宿主 / 形态</td><td>独立 Python 库 + inspector</td><td>Cline 插件：6 个注册工具 + rule</td><td>Codex 插件：SKILL.md + 在 <code>cua_repl</code> 内 import 的 JS 门面（<b>不是</b>注册工具）</td></tr>
+        <tr><td>执行体</td><td>browser-harness CDP → 用户 Chrome</td><td>Playwright 隔离 Chromium</td><td><b>Codex 内置 CUA</b>：<code>cua.getApp()</code> 或 Tab；浏览器 + 原生 macOS app</td></tr>
+        <tr><td>观测</td><td>自写 <code>snapshot.js</code> DOM 快照，WeakMap 节点身份</td><td><code>evaluateHandle</code> DOM 快照 + offscreen/selected 附加</td><td>CUA <b>AX 文本树</b>正则解析；索引即 CUA 元素编号，无节点身份/遮挡</td></tr>
+        <tr><td>Jev 看到的元素</td><td>页面上全部可见控件 ≤250</td><td>全部可见控件 ≤200</td><td><b>仅 Codex 白名单命中的</b>控件 ≤240；consequential 与 sensitive 先剔除</td></tr>
+        <tr><td>问题结构</td><td>operation + 每操作 target head</td><td>单个展平 action choice</td><td>operation + 每操作 target head（0.2.0 移植自 ultrafast），多 <code>FILL_GROUP</code>/<code>KEY</code> 两种操作</td></tr>
+        <tr><td>TYPE_TEXT 的文本</td><td>小 LLM（mercury-2.5 via OpenRouter）</td><td>小 LLM（gemini-2.5-flash-lite via Gateway）</td><td><b>无模型</b>：Codex 预置 <code>textSlots</code>，Jev 只选槽位</td></tr>
+        <tr><td>Jev 接入</td><td>直连 TypeSafe</td><td>Vercel AI Gateway</td><td>直连 TypeSafe，经本机 loopback bridge（token 认证、pin 上游）</td></tr>
+        <tr><td>置信门槛</td><td>无（只校验分布合法）</td><td>可选 <code>minProbability</code></td><td>默认强制：两个 head 各 confidence ≥ .65、probability ≥ .70</td></tr>
+        <tr><td>DONE 处理</td><td>采信，status=done；示例脚本另做独立 verify</td><td>返回 <code>done_unverified</code>，Cline 看截图</td><td><b>不采信</b>：本地 <code>verify(raw)</code> 决定 done；Jev DONE 而 verify 未过 → <code>failed_verification</code></td></tr>
+        <tr><td>新鲜度</td><td>scoped guard（节点+邻近上下文）或全量 marker</td><td>signature 全量 + 节点 <code>===</code>；CLICK 时表单/href/属性逐字段</td><td>strict：整棵 AX 文本（去焦点行）相等；scoped：roots + 相关控件祖先链 + caller <code>decisionContext</code>。执行前必再观测</td></tr>
+        <tr><td>动作后等待</td><td>rAF / 可见 option 事件驱动 ≤200 ms</td><td>固定 150/350/600 ms</td><td>无固定等待；直接 <code>getAXState</code>（本身 ~200 ms+），可选 <code>isPending(raw)</code> 谓词最多观测 3 次</td></tr>
+        <tr><td>预算</td><td>60 动作 / 120 决策</td><td>20 步(≤60) / 100 s</td><td>24 mutation / 32 请求 / 120 s 总；每 chunk 18 s / 8 动作；Jev 单请求 7 s</td></tr>
+        <tr><td>终止状态</td><td>done · blocked</td><td>7 种</td><td>12 种：done · yielded · waiting_for_ui · low_confidence · needs_codex · needs_codex_review · needs_inspection(poisoned) · failed_verification · scope_changed · budget_exceeded · cancelled · error</td></tr>
+        <tr><td>敏感动作</td><td>无特殊处理</td><td>Jev 可选 <code>REVIEW</code>（prompt 引导）</td><td>代码级：标签正则命中即不进候选；提交/删除类快捷键禁用；password 类 app 拒绝</td></tr>
+        <tr><td>会话续跑</td><td>Agent 实例</td><td>同 goal 保留 10 步</td><td>REPL 内 session 对象跨 chunk；<code>poisoned</code> 后不可复用，必须 Codex 先检查</td></tr>
+        <tr><td>实测（作者自报）</td><td>Flights 7.07 s，3/3 复现，中位 Jev 178 ms</td><td>未做基准</td><td>表单任务 3.95 s（决策 1.70 + 动作 0.08 + <b>观测 2.16</b>）；Calculator 12+34 → 8.3 s；开新 tab 搜百度 17 s 其中开页 13.7 s。作者明说“不是受控加速对比”</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>作者自报的时间分布</h2>
+  <p class="sub">2026-09-19 用真实 <code>jev-1.13.0</code> 跑的单样本（排除 Codex 规划、bridge/页面启动、app 启动）：</p>
+  <div class="tablewrap" style="max-width:720px">
+    <table class="small">
+      <thead><tr><th>任务</th><th>Jev 决策</th><th>mutation</th><th>AX 观测</th><th>回路总时</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr><td>本地表单：4 字段 group + 复选框 + 预览</td><td class="num">3 次 · 1.699 s</td><td class="num">6 · 0.083 s</td><td class="num">10 · 2.157 s</td><td class="num">3.949 s</td><td>预览可见，独立验证通过</td></tr>
+        <tr><td>macOS Calculator：12 + 34 =</td><td class="num">—</td><td class="num">6</td><td class="num">—</td><td class="num">8.338 s</td><td>显示 46</td></tr>
+        <tr><td>Chrome 新 tab 直搜百度（fast-path，0 次 Jev）</td><td class="num">0</td><td class="num">—</td><td class="num">开页 13.673 s</td><td class="num">17.134 s</td><td>结果验证通过</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sub" style="margin-top:12px">观测占了一半以上：CUA 每次都拿<b>完整</b> AX 树（<code>disableDiffing:true</code>，因为决策需要完整索引集）。这和 ultrafast 一次 CDP evaluate 拿结构化 JSON 相比，是天然更慢的一层。</p>
+
+  <h2>结论</h2>
+  <div class="takeaways">
+    <div class="card">
+      <h3>“Jev 只做选择”走到了极致</h3>
+      <p>前两者里 Jev 还要从全页控件里挑；这里 Codex 先把候选缩到白名单，Jev 只在“Codex 允许的几个控件 × 几种操作”里选。文本也不生成，只选槽位。Jev 的角色从“浏览器 agent 的大脑”退成“在主模型划定的小格子里快速做多步决定”。</p>
+    </div>
+    <div class="card">
+      <h3>正确的落点：省的是主模型往返，不是网络</h3>
+      <p>README 直说动机：“Returning to the main agent after every UI click adds latency and loses short-term action context.” 一个 chunk 内 3 次 Jev 决策 + 6 次 mutation 不需要回 Codex；否则每步都要 Codex 看截图/AX 再决定。速度收益来自这里，而不是 Jev 比 Codex 快多少。</p>
+    </div>
+    <div class="card">
+      <h3>安全设计比前两者更“硬”</h3>
+      <p>Cline 靠 prompt 让 Jev 返回 REVIEW；jev-desktop 靠代码：候选构建阶段就用正则把消费性控件踢出去，会话选项冻结，双门槛，DONE 不采信，poisoned 会话不可复用。代价是 Codex 要写更多前置配置（labels/slots/verify/scopeCheck）。</p>
+    </div>
+    <div class="card">
+      <h3>弱点也明显</h3>
+      <p>AX 文本树正则解析脆（依赖 CUA 输出格式）；无节点身份/遮挡检测；观测慢；<code>fast-path.mjs</code> 是百度专用硬编码；实测都是单样本；单人项目，一天内从 0.1 到 0.2。适合读思路，不适合直接依赖。</p>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <p><b>三者一句话：</b>ultrafast 证明“选择而非生成”能在真实网页上跑到 7 秒；Cline 把它包成沙箱化、可录像、可交还的工具；jev-desktop 则把决策回路搬进主 agent 已有的 Computer Use 里，让 Jev 在主模型划定的白名单内连做多步——覆盖原生 app，且不需要第二个文本模型。</p>
+    <p><b>如果要做“Claude Code / Codex + Jev”的集成，最值得抄的是 jev-desktop 的 API 形状</b>：<code>createSession({goal, clickLabels, textSlots, verify, scopeCheck, observations})</code> + chunked <code>run({maxMs, maxActions})</code> + 12 种明确的交还状态。决策问题的构造（<code>buildDecisionSpace</code>）直接复用 ultrafast 的 fan-out 即可。</p>
+  </div>
+
+  <div class="foot">本地路径 ~/playground/jev/jev-desktop（未随仓库上传，以链接引用）· MIT · 基于 2026-09-19 提交 9b02783 源码通读，未跑付费 API · 上一篇：ultrafast vs Cline 对比</div>
+</div>
